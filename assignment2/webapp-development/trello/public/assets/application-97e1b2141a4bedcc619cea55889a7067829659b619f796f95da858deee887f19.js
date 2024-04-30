@@ -13476,4 +13476,4 @@ bootstrap/dist/js/bootstrap.esm.js:
     * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
     *)
 */
-//# sourceMappingURL=/assets/application.js.map
+;
