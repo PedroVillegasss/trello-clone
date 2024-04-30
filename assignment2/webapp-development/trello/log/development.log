@@ -2145,3 +2145,33 @@ Processing by StaticPagesController#home as HTML
 Completed 200 OK in 215ms (Views: 199.8ms | ActiveRecord: 0.0ms | Allocations: 35756)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mBoard Delete All (1.7ms)[0m  [1m[31mDELETE FROM "boards"[0m
+  [1m[36mLabel Delete All (0.8ms)[0m  [1m[31mDELETE FROM "labels"[0m
+  [1m[36mState Delete All (0.6ms)[0m  [1m[31mDELETE FROM "states"[0m
+  [1m[36mTaskComment Delete All (0.9ms)[0m  [1m[31mDELETE FROM "task_comments"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mBoard Delete All (0.4ms)[0m  [1m[31mDELETE FROM "boards"[0m
+  [1m[36mLabel Delete All (0.5ms)[0m  [1m[31mDELETE FROM "labels"[0m
+  [1m[36mState Delete All (0.4ms)[0m  [1m[31mDELETE FROM "states"[0m
+  [1m[36mTaskComment Delete All (0.4ms)[0m  [1m[31mDELETE FROM "task_comments"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mBoard Delete All (0.6ms)[0m  [1m[31mDELETE FROM "boards"[0m
+  [1m[36mLabel Delete All (0.4ms)[0m  [1m[31mDELETE FROM "labels"[0m
+  [1m[36mState Delete All (0.4ms)[0m  [1m[31mDELETE FROM "states"[0m
+  [1m[36mTaskComment Delete All (0.4ms)[0m  [1m[31mDELETE FROM "task_comments"[0m
+  [1m[36mTask Delete All (1.0ms)[0m  [1m[31mDELETE FROM "tasks"[0m
+  [1m[36mTeam Delete All (0.7ms)[0m  [1m[31mDELETE FROM "teams"[0m
+  [1m[36mUserBoard Delete All (1.4ms)[0m  [1m[31mDELETE FROM "user_boards"[0m
+  [1m[36mUserTask Delete All (1.1ms)[0m  [1m[31mDELETE FROM "user_tasks"[0m
+  [1m[36mUserTeam Delete All (1.2ms)[0m  [1m[31mDELETE FROM "user_teams"[0m
+  [1m[36mUser Delete All (0.7ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (5.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Pedro Villegas"], ["email", "ppvillegas@miuandes.cl"], ["password", "[FILTERED]"], ["created_at", "2024-04-30 14:27:05.930673"], ["updated_at", "2024-04-30 14:27:05.930673"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Benjamin Valenzuela"], ["email", "bnvalenzuela@miuandes.cl"], ["password", "[FILTERED]"], ["created_at", "2024-04-30 14:27:05.942573"], ["updated_at", "2024-04-30 14:27:05.942573"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Rodrigo Orellana"], ["email", "rrorellana@miuandes.cl"], ["password", "[FILTERED]"], ["created_at", "2024-04-30 14:27:05.947544"], ["updated_at", "2024-04-30 14:27:05.947544"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
