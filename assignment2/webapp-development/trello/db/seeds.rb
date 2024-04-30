@@ -45,9 +45,9 @@ user3 = User.create(
 
 team1 = Team.create(name:"grupo17")
 
-board1 = Board.create(user_id: user1.id, team_id: team1.id, name:"tablero17", color:"azul", is_public: true)
-board2 = Board.create(user_id: user2.id, name:"tablero18", color:"rojo", is_public: true)
-board3 = Board.create(user_id: user3.id, name:"tablero19", color:"verde", is_public: true)
+board1 = Board.create(user_id: user1.id, team_id: team1.id, name:"tablero17", color:"#B820D6", is_public: true)
+board2 = Board.create(user_id: user2.id, name:"tablero18", color:"#20D65F", is_public: true)
+board3 = Board.create(user_id: user3.id, name:"tablero19", color:"#5720D6", is_public: true)
 
 states1 = (1..4).map do |position|
   board1.states.create(name: "estado#{position}", position: position)
@@ -69,7 +69,7 @@ end
     name: "Tarea#{i+1}",
     priority: rand(1..3),
     description: "Esta es la descripción de la tarea #{i+1}",
-    label_id: Label.create(user_id: user1.id, board_id: board1.id, name: "label#{i+1}", color: "verde").id
+    label_id: Label.create(user_id: user1.id, board_id: board1.id, name: "label#{i+1}", color: "#F89865 ").id
   )
 end
 
@@ -81,7 +81,7 @@ end
     name: "Tarea#{i+1}",
     priority: rand(1..3),
     description: "Esta es la descripción de la tarea #{i+1}",
-    label_id: Label.create(user_id: user2.id, board_id: board2.id, name: "label#{i+1}", color: "verde").id
+    label_id: Label.create(user_id: user2.id, board_id: board2.id, name: "label#{i+1}", color: "#000000").id
   )
 end
 
@@ -93,6 +93,6 @@ end
     name: "Tarea#{i+1}",
     priority: rand(1..3),
     description: "Esta es la descripción de la tarea #{i+1}",
-    label_id: Label.create(user_id: user3.id, board_id: board3.id, name: "label#{i+1}", color: "verde").id
+    label_id: Label.create(user_id: user3.id, board_id: board3.id, name: "label#{i+1}", color: "#FF0068").id
   )
 end

@@ -4325,3 +4325,369 @@ Completed 200 OK in 34ms (Views: 19.0ms | ActiveRecord: 0.0ms | Allocations: 578
   [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT $1[0m  [["LIMIT", 11]]
   [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" /* loading for pp */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (179.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "trello_development"[0m
+  [1m[35m (98.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "trello_test"[0m
+  [1m[35m (341.0ms)[0m  [1m[35mCREATE DATABASE "trello_development" ENCODING = 'unicode'[0m
+  [1m[35m (133.4ms)[0m  [1m[35mCREATE DATABASE "trello_test" ENCODING = 'unicode'[0m
+  [1m[35m (49.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2052706359555216225)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (4.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-04-30 20:03:45.579032', '2024-04-30 20:03:45.579035') RETURNING "key"[0m
+Migrating to CreateTableUsers (20240430124147)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240430124147') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableTeams (20240430124515)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.2ms)[0m  [1m[35mCREATE TABLE "teams" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240430124515') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableBoards (20240430124659)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.0ms)[0m  [1m[35mCREATE TABLE "boards" ("id" bigserial primary key, "user_id" bigint, "team_id" bigint, "name" character varying NOT NULL, "color" character varying, "is_public" boolean DEFAULT FALSE, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_0732f8ef3d"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_0ba49cfc84"
+FOREIGN KEY ("team_id")
+  REFERENCES "teams" ("id")
+)[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE INDEX "index_boards_on_user_id" ON "boards" ("user_id")[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE INDEX "index_boards_on_team_id" ON "boards" ("team_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240430124659') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableStates (20240430125843)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.3ms)[0m  [1m[35mCREATE TABLE "states" ("id" bigserial primary key, "board_id" bigint, "name" character varying NOT NULL, "position" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_6e512e5d36"
+FOREIGN KEY ("board_id")
+  REFERENCES "boards" ("id")
+)[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE INDEX "index_states_on_board_id" ON "states" ("board_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240430125843') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableTasks (20240430130623)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.7ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" bigserial primary key, "state_id" bigint, "informer_user_id_id" bigint NOT NULL, "assignee_user_id_id" bigint, "name" character varying NOT NULL, "priority" integer, "description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_9d5deecb52"
+FOREIGN KEY ("state_id")
+  REFERENCES "states" ("id")
+, CONSTRAINT "fk_rails_f098ab0f74"
+FOREIGN KEY ("informer_user_id_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_a89d6e46be"
+FOREIGN KEY ("assignee_user_id_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE INDEX "index_tasks_on_state_id" ON "tasks" ("state_id")[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE INDEX "index_tasks_on_informer_user_id_id" ON "tasks" ("informer_user_id_id")[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE INDEX "index_tasks_on_assignee_user_id_id" ON "tasks" ("assignee_user_id_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240430130623') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableLabels (20240430130822)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "labels" ("id" bigserial primary key, "user_id" bigint, "board_id" bigint, "name" character varying NOT NULL, "color" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_9ea980b469"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_79fa8ff3c8"
+FOREIGN KEY ("board_id")
+  REFERENCES "boards" ("id")
+)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE INDEX "index_labels_on_user_id" ON "labels" ("user_id")[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE INDEX "index_labels_on_board_id" ON "labels" ("board_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240430130822') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableTaskComments (20240430133003)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (55.3ms)[0m  [1m[35mCREATE TABLE "task_comments" ("id" bigserial primary key, "user_id" bigint, "task_id" bigint, "body" text NOT NULL, "filename" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ee51dc8b8a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_c66c8b237a"
+FOREIGN KEY ("task_id")
+  REFERENCES "tasks" ("id")
+)[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE INDEX "index_task_comments_on_user_id" ON "task_comments" ("user_id")[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE INDEX "index_task_comments_on_task_id" ON "task_comments" ("task_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240430133003') RETURNING "version"[0m
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableUserBoard (20240430133350)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE "user_boards" ("id" bigserial primary key, "user_id" bigint, "board_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f95717ccd9"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_b08faac661"
+FOREIGN KEY ("board_id")
+  REFERENCES "boards" ("id")
+)[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE INDEX "index_user_boards_on_user_id" ON "user_boards" ("user_id")[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE INDEX "index_user_boards_on_board_id" ON "user_boards" ("board_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240430133350') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableUserTask (20240430134224)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "user_tasks" ("id" bigserial primary key, "user_id" bigint, "task_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e4209a9ba9"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_5a3f03c742"
+FOREIGN KEY ("task_id")
+  REFERENCES "tasks" ("id")
+)[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE INDEX "index_user_tasks_on_user_id" ON "user_tasks" ("user_id")[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE INDEX "index_user_tasks_on_task_id" ON "user_tasks" ("task_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240430134224') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableUserTeam (20240430134444)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "user_teams" ("id" bigserial primary key, "user_id" bigint, "team_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_978858c8ea"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_64c25f3fe6"
+FOREIGN KEY ("team_id")
+  REFERENCES "teams" ("id")
+)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE INDEX "index_user_teams_on_user_id" ON "user_teams" ("user_id")[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE INDEX "index_user_teams_on_team_id" ON "user_teams" ("team_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240430134444') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddLabelIdToTasks (20240430140414)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "tasks" ADD "label_id" bigint[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE INDEX "index_tasks_on_label_id" ON "tasks" ("label_id")[0m
+  [1m[35m (4.8ms)[0m  [1m[35mALTER TABLE "tasks" ADD CONSTRAINT "fk_rails_1a6e22a599"
+FOREIGN KEY ("label_id")
+  REFERENCES "labels" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240430140414') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2052706359555216225)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTaskComment Delete All (2.8ms)[0m  [1m[31mDELETE FROM "task_comments"[0m
+  [1m[36mTask Delete All (0.4ms)[0m  [1m[31mDELETE FROM "tasks"[0m
+  [1m[36mState Delete All (0.7ms)[0m  [1m[31mDELETE FROM "states"[0m
+  [1m[36mLabel Delete All (0.3ms)[0m  [1m[31mDELETE FROM "labels"[0m
+  [1m[36mUserBoard Delete All (0.5ms)[0m  [1m[31mDELETE FROM "user_boards"[0m
+  [1m[36mUserTask Delete All (0.5ms)[0m  [1m[31mDELETE FROM "user_tasks"[0m
+  [1m[36mUserTeam Delete All (1.5ms)[0m  [1m[31mDELETE FROM "user_teams"[0m
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  [1m[36mTeam Delete All (0.2ms)[0m  [1m[31mDELETE FROM "teams"[0m
+  [1m[36mBoard Delete All (0.6ms)[0m  [1m[31mDELETE FROM "boards"[0m
+  [1m[36mUser Delete All (0.4ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Pedro Villegas"], ["email", "ppvillegas@miuandes.cl"], ["password", "[FILTERED]"], ["created_at", "2024-04-30 20:03:51.095738"], ["updated_at", "2024-04-30 20:03:51.095738"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Benjamin Valenzuela"], ["email", "bnvalenzuela@miuandes.cl"], ["password", "[FILTERED]"], ["created_at", "2024-04-30 20:03:51.103234"], ["updated_at", "2024-04-30 20:03:51.103234"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (29.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Rodrigo Orellana"], ["email", "rrorellana@miuandes.cl"], ["password", "[FILTERED]"], ["created_at", "2024-04-30 20:03:51.108620"], ["updated_at", "2024-04-30 20:03:51.108620"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Create (1.6ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "grupo17"], ["created_at", "2024-04-30 20:03:51.149243"], ["updated_at", "2024-04-30 20:03:51.149243"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBoard Create (2.1ms)[0m  [1m[32mINSERT INTO "boards" ("user_id", "team_id", "name", "color", "is_public", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 1], ["team_id", 1], ["name", "tablero17"], ["color", "azul"], ["is_public", true], ["created_at", "2024-04-30 20:03:51.183681"], ["updated_at", "2024-04-30 20:03:51.183681"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBoard Create (0.3ms)[0m  [1m[32mINSERT INTO "boards" ("user_id", "team_id", "name", "color", "is_public", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 2], ["team_id", nil], ["name", "tablero18"], ["color", "rojo"], ["is_public", true], ["created_at", "2024-04-30 20:03:51.191897"], ["updated_at", "2024-04-30 20:03:51.191897"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBoard Create (0.3ms)[0m  [1m[32mINSERT INTO "boards" ("user_id", "team_id", "name", "color", "is_public", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 3], ["team_id", nil], ["name", "tablero19"], ["color", "verde"], ["is_public", true], ["created_at", "2024-04-30 20:03:51.199457"], ["updated_at", "2024-04-30 20:03:51.199457"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Create (2.6ms)[0m  [1m[32mINSERT INTO "states" ("board_id", "name", "position", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["board_id", 1], ["name", "estado1"], ["position", 1], ["created_at", "2024-04-30 20:03:51.215714"], ["updated_at", "2024-04-30 20:03:51.215714"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Create (1.9ms)[0m  [1m[32mINSERT INTO "states" ("board_id", "name", "position", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["board_id", 1], ["name", "estado2"], ["position", 2], ["created_at", "2024-04-30 20:03:51.222711"], ["updated_at", "2024-04-30 20:03:51.222711"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Create (2.3ms)[0m  [1m[32mINSERT INTO "states" ("board_id", "name", "position", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["board_id", 1], ["name", "estado3"], ["position", 3], ["created_at", "2024-04-30 20:03:51.228289"], ["updated_at", "2024-04-30 20:03:51.228289"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Create (3.5ms)[0m  [1m[32mINSERT INTO "states" ("board_id", "name", "position", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["board_id", 1], ["name", "estado4"], ["position", 4], ["created_at", "2024-04-30 20:03:51.240454"], ["updated_at", "2024-04-30 20:03:51.240454"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Create (3.5ms)[0m  [1m[32mINSERT INTO "states" ("board_id", "name", "position", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["board_id", 2], ["name", "estado1"], ["position", 1], ["created_at", "2024-04-30 20:03:51.250708"], ["updated_at", "2024-04-30 20:03:51.250708"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Create (1.8ms)[0m  [1m[32mINSERT INTO "states" ("board_id", "name", "position", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["board_id", 2], ["name", "estado2"], ["position", 2], ["created_at", "2024-04-30 20:03:51.259218"], ["updated_at", "2024-04-30 20:03:51.259218"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Create (1.6ms)[0m  [1m[32mINSERT INTO "states" ("board_id", "name", "position", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["board_id", 2], ["name", "estado3"], ["position", 3], ["created_at", "2024-04-30 20:03:51.265267"], ["updated_at", "2024-04-30 20:03:51.265267"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Create (1.8ms)[0m  [1m[32mINSERT INTO "states" ("board_id", "name", "position", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["board_id", 2], ["name", "estado4"], ["position", 4], ["created_at", "2024-04-30 20:03:51.271198"], ["updated_at", "2024-04-30 20:03:51.271198"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Create (2.1ms)[0m  [1m[32mINSERT INTO "states" ("board_id", "name", "position", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["board_id", 3], ["name", "estado1"], ["position", 1], ["created_at", "2024-04-30 20:03:51.278378"], ["updated_at", "2024-04-30 20:03:51.278378"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Create (1.3ms)[0m  [1m[32mINSERT INTO "states" ("board_id", "name", "position", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["board_id", 3], ["name", "estado2"], ["position", 2], ["created_at", "2024-04-30 20:03:51.284767"], ["updated_at", "2024-04-30 20:03:51.284767"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Create (1.2ms)[0m  [1m[32mINSERT INTO "states" ("board_id", "name", "position", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["board_id", 3], ["name", "estado3"], ["position", 3], ["created_at", "2024-04-30 20:03:51.289191"], ["updated_at", "2024-04-30 20:03:51.289191"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Create (1.3ms)[0m  [1m[32mINSERT INTO "states" ("board_id", "name", "position", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["board_id", 3], ["name", "estado4"], ["position", 4], ["created_at", "2024-04-30 20:03:51.294021"], ["updated_at", "2024-04-30 20:03:51.294021"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLabel Create (1.2ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["board_id", 1], ["name", "label1"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.312261"], ["updated_at", "2024-04-30 20:03:51.312261"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Create (2.3ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 3], ["informer_user_id_id", 1], ["assignee_user_id_id", 3], ["name", "Tarea1"], ["priority", 2], ["description", "Esta es la descripción de la tarea 1"], ["created_at", "2024-04-30 20:03:51.357731"], ["updated_at", "2024-04-30 20:03:51.357731"], ["label_id", 1]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.5ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["board_id", 1], ["name", "label2"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.369803"], ["updated_at", "2024-04-30 20:03:51.369803"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Create (0.8ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 2], ["informer_user_id_id", 1], ["assignee_user_id_id", 3], ["name", "Tarea2"], ["priority", 1], ["description", "Esta es la descripción de la tarea 2"], ["created_at", "2024-04-30 20:03:51.378739"], ["updated_at", "2024-04-30 20:03:51.378739"], ["label_id", 2]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.6ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["board_id", 1], ["name", "label3"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.388319"], ["updated_at", "2024-04-30 20:03:51.388319"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.4ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Create (0.8ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 1], ["informer_user_id_id", 1], ["assignee_user_id_id", 3], ["name", "Tarea3"], ["priority", 1], ["description", "Esta es la descripción de la tarea 3"], ["created_at", "2024-04-30 20:03:51.397231"], ["updated_at", "2024-04-30 20:03:51.397231"], ["label_id", 3]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.5ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.5ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["board_id", 1], ["name", "label4"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.406693"], ["updated_at", "2024-04-30 20:03:51.406693"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.4ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 3], ["informer_user_id_id", 1], ["assignee_user_id_id", 3], ["name", "Tarea4"], ["priority", 2], ["description", "Esta es la descripción de la tarea 4"], ["created_at", "2024-04-30 20:03:51.416497"], ["updated_at", "2024-04-30 20:03:51.416497"], ["label_id", 4]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.5ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["board_id", 1], ["name", "label5"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.425324"], ["updated_at", "2024-04-30 20:03:51.425324"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 3], ["informer_user_id_id", 1], ["assignee_user_id_id", 3], ["name", "Tarea5"], ["priority", 3], ["description", "Esta es la descripción de la tarea 5"], ["created_at", "2024-04-30 20:03:51.434012"], ["updated_at", "2024-04-30 20:03:51.434012"], ["label_id", 5]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.5ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 2], ["board_id", 2], ["name", "label1"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.442410"], ["updated_at", "2024-04-30 20:03:51.442410"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.5ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTask Create (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 6], ["informer_user_id_id", 2], ["assignee_user_id_id", 2], ["name", "Tarea1"], ["priority", 2], ["description", "Esta es la descripción de la tarea 1"], ["created_at", "2024-04-30 20:03:51.453490"], ["updated_at", "2024-04-30 20:03:51.453490"], ["label_id", 6]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.6ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 2], ["board_id", 2], ["name", "label2"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.464489"], ["updated_at", "2024-04-30 20:03:51.464489"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.4ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 7], ["informer_user_id_id", 2], ["assignee_user_id_id", 2], ["name", "Tarea2"], ["priority", 3], ["description", "Esta es la descripción de la tarea 2"], ["created_at", "2024-04-30 20:03:51.474474"], ["updated_at", "2024-04-30 20:03:51.474474"], ["label_id", 7]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.4ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 2], ["board_id", 2], ["name", "label3"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.485002"], ["updated_at", "2024-04-30 20:03:51.485002"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 7], ["informer_user_id_id", 2], ["assignee_user_id_id", 3], ["name", "Tarea3"], ["priority", 1], ["description", "Esta es la descripción de la tarea 3"], ["created_at", "2024-04-30 20:03:51.494446"], ["updated_at", "2024-04-30 20:03:51.494446"], ["label_id", 8]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.5ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 2], ["board_id", 2], ["name", "label4"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.503432"], ["updated_at", "2024-04-30 20:03:51.503432"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 8], ["informer_user_id_id", 2], ["assignee_user_id_id", 2], ["name", "Tarea4"], ["priority", 1], ["description", "Esta es la descripción de la tarea 4"], ["created_at", "2024-04-30 20:03:51.513258"], ["updated_at", "2024-04-30 20:03:51.513258"], ["label_id", 9]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.6ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 2], ["board_id", 2], ["name", "label5"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.522759"], ["updated_at", "2024-04-30 20:03:51.522759"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTask Create (0.8ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 5], ["informer_user_id_id", 2], ["assignee_user_id_id", 2], ["name", "Tarea5"], ["priority", 2], ["description", "Esta es la descripción de la tarea 5"], ["created_at", "2024-04-30 20:03:51.532990"], ["updated_at", "2024-04-30 20:03:51.532990"], ["label_id", 10]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.4ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 3], ["board_id", 3], ["name", "label1"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.543560"], ["updated_at", "2024-04-30 20:03:51.543560"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 12], ["informer_user_id_id", 3], ["assignee_user_id_id", 1], ["name", "Tarea1"], ["priority", 2], ["description", "Esta es la descripción de la tarea 1"], ["created_at", "2024-04-30 20:03:51.554331"], ["updated_at", "2024-04-30 20:03:51.554331"], ["label_id", 11]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.4ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 3], ["board_id", 3], ["name", "label2"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.564451"], ["updated_at", "2024-04-30 20:03:51.564451"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTask Create (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 10], ["informer_user_id_id", 3], ["assignee_user_id_id", 3], ["name", "Tarea2"], ["priority", 3], ["description", "Esta es la descripción de la tarea 2"], ["created_at", "2024-04-30 20:03:51.573802"], ["updated_at", "2024-04-30 20:03:51.573802"], ["label_id", 12]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.6ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 3], ["board_id", 3], ["name", "label3"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.584369"], ["updated_at", "2024-04-30 20:03:51.584369"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (2.4ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 10], ["informer_user_id_id", 3], ["assignee_user_id_id", 2], ["name", "Tarea3"], ["priority", 2], ["description", "Esta es la descripción de la tarea 3"], ["created_at", "2024-04-30 20:03:51.598131"], ["updated_at", "2024-04-30 20:03:51.598131"], ["label_id", 13]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.3ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 3], ["board_id", 3], ["name", "label4"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.606703"], ["updated_at", "2024-04-30 20:03:51.606703"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.2ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 12], ["informer_user_id_id", 3], ["assignee_user_id_id", 2], ["name", "Tarea4"], ["priority", 1], ["description", "Esta es la descripción de la tarea 4"], ["created_at", "2024-04-30 20:03:51.615630"], ["updated_at", "2024-04-30 20:03:51.615630"], ["label_id", 14]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mLabel Create (0.5ms)[0m  [1m[32mINSERT INTO "labels" ("user_id", "board_id", "name", "color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 3], ["board_id", 3], ["name", "label5"], ["color", "verde"], ["created_at", "2024-04-30 20:03:51.627251"], ["updated_at", "2024-04-30 20:03:51.627251"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mState Load (0.2ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTask Create (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("state_id", "informer_user_id_id", "assignee_user_id_id", "name", "priority", "description", "created_at", "updated_at", "label_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["state_id", 10], ["informer_user_id_id", 3], ["assignee_user_id_id", 3], ["name", "Tarea5"], ["priority", 1], ["description", "Esta es la descripción de la tarea 5"], ["created_at", "2024-04-30 20:03:51.635937"], ["updated_at", "2024-04-30 20:03:51.635937"], ["label_id", 15]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mBoard Load (0.6ms)[0m  [1m[34mSELECT "boards".* FROM "boards" /* loading for pp */ LIMIT $1[0m  [["LIMIT", 11]]
