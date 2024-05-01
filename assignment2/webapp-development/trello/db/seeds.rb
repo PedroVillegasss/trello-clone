@@ -45,9 +45,9 @@ user3 = User.create(
 
 team1 = Team.create(name:"grupo17")
 
-board1 = Board.create(user_id: user1.id, team_id: team1.id, name:"tablero17", color:"#B820D6", is_public: true)
-board2 = Board.create(user_id: user2.id, name:"tablero18", color:"#20D65F", is_public: true)
-board3 = Board.create(user_id: user3.id, name:"tablero19", color:"#5720D6", is_public: true)
+board1 = Board.create(user_id: user1.id, team_id: team1.id, name:"Projecto TPI", color:"#A6DD9B", is_public: true)
+board2 = Board.create(user_id: user2.id, name:"Buk App", color:" #EABEB0", is_public: true)
+board3 = Board.create(user_id: user3.id, name:"Buk Competition", color:"#9BB8D3", is_public: true)
 
 states1 = (1..4).map do |position|
   board1.states.create(name: "estado#{position}", position: position)

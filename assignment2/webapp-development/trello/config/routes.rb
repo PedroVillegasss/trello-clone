@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "boards#home"
   get '/home', to: 'boards#home'
+  get '/table', to: 'static_pages#table'
 
   resources :boards
 end
