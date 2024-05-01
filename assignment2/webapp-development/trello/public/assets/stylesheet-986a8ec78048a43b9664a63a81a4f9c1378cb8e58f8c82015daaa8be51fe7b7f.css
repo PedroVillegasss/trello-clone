@@ -1,0 +1,49 @@
+.card {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    height: 300px;
+    margin-left: 36px;
+}
+
+#footer{
+    margin-top: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#vertical-navbar {
+    margin-top: 20px;
+}
+
+/* Estilos personalizados para el navbar vertical */
+#vertical-navbar {
+    background-color: #f8f9fa; /* Cambia el color de fondo */
+    padding: 20px; /* Agrega espaciado interno */
+    border-right: 1px solid #dee2e6; /* Agrega un borde derecho */
+  }
+
+  .nav-item {
+    margin-bottom: 15px; /* Agrega espaciado entre elementos */
+  }
+
+  .nav-link {
+    color: #343a40; /* Cambia el color del texto */
+    font-weight: bold; /* Añade negrita al texto */
+    text-decoration: none; /* Quita subrayado */
+    transition: all 0.3s ease; /* Agrega transición suave */
+  }
+
+  .nav-link:hover {
+    color: #007bff; /* Cambia el color del texto al pasar el ratón */
+  }
+
+  .nav-link svg {
+    margin-right: 10px; /* Agrega espaciado entre el icono y el texto */
+  }
+
+  .nav-link span {
+    font-size: 18px; /* Cambia el tamaño del texto */
+  }

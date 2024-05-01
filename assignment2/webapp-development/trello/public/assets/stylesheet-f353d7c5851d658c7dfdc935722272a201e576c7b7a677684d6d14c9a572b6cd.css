@@ -1,0 +1,52 @@
+.card {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    height: 300px;
+    margin-left: 36px;
+}
+
+#footer{
+    margin-top: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#vertical-navbar {
+    margin-top: 20px;
+}
+
+#vertical-navbar {
+    background-color: #f8f9fa;  
+    padding: 20px;
+    border-right: 150px solid #f8f9fa;
+  }
+
+.nav-item {
+margin-bottom: 15px;
+font-weight: bold;
+}
+
+.nav-link {
+    color: #343a40; /* Cambia el color del texto */
+    font-weight: bold; /* Añade negrita al texto */
+    text-decoration: none; /* Quita subrayado */
+  }
+
+.nav-link svg {
+margin-right: 10px;
+}
+
+.nav-item:hover {
+background-color: #e9ecef;
+border-radius: 10px;
+}
+
+footer {
+    background-color: #343a40; /* Cambia el color de fondo */
+    color: white; /* Cambia el color del texto */
+    padding: 20px; /* Agrega espaciado interno */
+    text-align: center; /* Centra el texto */
+  }

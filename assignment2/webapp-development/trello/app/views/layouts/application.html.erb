@@ -13,6 +13,56 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-auto bg-light" style="min-height: 100vh;">
+          <div id="vertical-navbar" >
+            <ul id="test" class="nav flex-column position-fixed">
+              
+              <li class="nav-item" style="display: flex; align-items: center;">
+                <a class="nav-link active" aria-current="page" href="<%= boards_path %>">
+                  <svg role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="black" width="28" height="28"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V6H19V20H5V6H7V5ZM9 6H15V5H9V6ZM7 9C7 8.44772 7.44772 8 8 8H10C10.5523 8 11 8.44772 11 9V16C11 16.5523 10.5523 17 10 17H8C7.44772 17 7 16.5523 7 16V9ZM14 8C13.4477 8 13 8.44772 13 9V14C13 14.5523 13.4477 15 14 15H16C16.5523 15 17 14.5523 17 14V9C17 8.44772 16.5523 8 16 8H14Z"></path><path d="M4 6C2.89543 6 2 6.89543 2 8V18C2 19.1046 2.89543 20 4 20L4 6Z"></path><path d="M20 20V6C21.1046 6 22 6.89543 22 8V18C22 19.1046 21.1046 20 20 20Z"></path></svg>
+                </a>
+                <span style="margin-left: 5px;">Boards</span>
+              </li>
+
+                <li class="nav-item" style="display: flex; align-items: center;">
+                <a class="nav-link active" aria-current="page" href="<%= home_path %>">
+                <svg role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="black" width="28" height="28"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 5C3 3.89543 3.89543 3 5 3H9C10.1046 3 11 3.89543 11 5V9C11 10.1046 10.1046 11 9 11H5C3.89543 11 3 10.1046 3 9V5ZM5 5H9V9H5V5Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M3 15C3 13.8954 3.89543 13 5 13H9C10.1046 13 11 13.8954 11 15V19C11 20.1046 10.1046 21 9 21H5C3.89543 21 3 20.1046 3 19V15ZM5 15H9V19H5V15Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M15 3C13.8954 3 13 3.89543 13 5V9C13 10.1046 13.8954 11 15 11H19C20.1046 11 21 10.1046 21 9V5C21 3.89543 20.1046 3 19 3H15ZM19 5H15V9H19V5Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M13 15C13 13.8954 13.8954 13 15 13H19C20.1046 13 21 13.8954 21 15V19C21 20.1046 20.1046 21 19 21H15C13.8954 21 13 20.1046 13 19V15ZM15 15H19V19H15V15Z"></path></svg>                </a>
+                <span style="margin-left: 5px;">Home</span>
+              </li>
+
+             <hr style="width: 150px;">
+
+              <footer>
+                <div class="container">
+                  <span class="text-muted">© 2024 Project17.</span>
+                  <div>
+                    <span class="text-muted"> All rights reserved.</span>
+                  </div>
+                </div>
+              </footer>
+
+              <div>
+                    <a href="https://github.com/ICC4103-202410-WebTech/course-project-project17.git">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="bi bi-github" style="margin-top: 25px; margin-left: 50px" fill="black" width="45" height="45">
+                        <path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.385.6.111.793-.261.793-.581 0-.288-.01-1.047-.015-2.057-3.338.724-4.042-1.611-4.042-1.611-.546-1.385-1.332-1.754-1.332-1.754-1.088-.742.082-.727.082-.727 1.205.085 1.838 1.238 1.838 1.238 1.07 1.832 2.807 1.304 3.495.997.109-.775.418-1.305.761-1.605-2.665-.307-5.466-1.332-5.466-5.93 0-1.31.465-2.384 1.235-3.224-.124-.307-.537-1.527.117-3.18 0 0 1.01-.322 3.3 1.23A11.487 11.487 0 0 1 12 6.296c.987.004 1.984.132 2.908.388 2.29-1.552 3.297-1.23 3.297-1.23.656 1.653.243 2.873.12 3.18.77.84 1.23 1.914 1.23 3.224 0 4.609-2.805 5.618-5.476 5.92.43.372.81 1.103.81 2.225 0 1.608-.015 2.898-.015 3.294 0 .322.19.699.8.581C20.565 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                    </a>
+              </div>
+
+            </ul>
+          </div>
+        </div>
+
+        <div class="col">
+          <%= yield %>
+        </div>
+
+      </div>
+    </div>
+    
   </body>
 </html>

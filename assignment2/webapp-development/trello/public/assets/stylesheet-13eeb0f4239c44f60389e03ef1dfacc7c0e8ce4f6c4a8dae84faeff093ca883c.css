@@ -1,0 +1,39 @@
+.card {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    height: 300px;
+    margin-left: 36px;
+}
+
+#footer{
+    margin-top: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#vertical-navbar {
+    margin-top: 20px;
+}
+
+#vertical-navbar {
+    background-color: #f8f9fa;  
+    padding: 20px;
+    border-right: 150px solid #f8f9fa;
+  }
+
+  .nav-item {
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  .nav-link {
+    color: #1e2125;
+  }
+
+  .nav-link svg {
+    margin-right: 10px;
+  }
+
