@@ -47,18 +47,18 @@ team1 = Team.create(name:"grupo17")
 
 board1 = Board.create(user_id: user1.id, team_id: team1.id, name:"Projecto TPI", color:"#A6DD9B", is_public: true)
 board2 = Board.create(user_id: user2.id, name:"Buk App", color:" #EABEB0", is_public: true)
-board3 = Board.create(user_id: user3.id, name:"Buk Competition", color:"#9BB8D3", is_public: true)
+board3 = Board.create(user_id: user3.id, name:"Personal", color:"#9BB8D3", is_public: true)
 
 states1 = (1..4).map do |position|
-  board1.states.create(name: "estado#{position}", position: position)
+  board1.states.create(name: "State #{position}", position: position)
 end
 
 states2 = (1..4).map do |position|
-  board2.states.create(name: "estado#{position}", position: position)
+  board2.states.create(name: "State #{position}", position: position)
 end
 
 states3 = (1..4).map do |position|
-  board3.states.create(name: "estado#{position}", position: position)
+  board3.states.create(name: "State #{position}", position: position)
 end
 
 5.times do |i|
@@ -66,10 +66,10 @@ end
     state_id: states1.sample.id,
     informer_user_id_id: user1.id,
     assignee_user_id_id: [user1.id, user2.id, user3.id].sample,
-    name: "Tarea#{i+1}",
+    name: "Task #{i+1}",
     priority: rand(1..3),
-    description: "Esta es la descripción de la tarea #{i+1}",
-    label_id: Label.create(user_id: user1.id, board_id: board1.id, name: "label#{i+1}", color: "#F89865 ").id
+    description: "Esta es la descripción de la task #{i+1}",
+    label_id: Label.create(user_id: user1.id, board_id: board1.id, name: "label #{i+1}", color: "#F89865").id
   )
 end
 
@@ -78,10 +78,10 @@ end
     state_id: states2.sample.id,
     informer_user_id_id: user2.id,
     assignee_user_id_id: [user1.id, user2.id, user3.id].sample,
-    name: "Tarea#{i+1}",
+    name: "Task #{i+1}",
     priority: rand(1..3),
-    description: "Esta es la descripción de la tarea #{i+1}",
-    label_id: Label.create(user_id: user2.id, board_id: board2.id, name: "label#{i+1}", color: "#000000").id
+    description: "Esta es la descripción de la task #{i+1}",
+    label_id: Label.create(user_id: user2.id, board_id: board2.id, name: "label #{i+1}", color: "#000000").id
   )
 end
 
@@ -90,9 +90,9 @@ end
     state_id: states3.sample.id,
     informer_user_id_id: user3.id,
     assignee_user_id_id: [user1.id, user2.id, user3.id].sample,
-    name: "Tarea#{i+1}",
+    name: "Task #{i+1}",
     priority: rand(1..3),
-    description: "Esta es la descripción de la tarea #{i+1}",
-    label_id: Label.create(user_id: user3.id, board_id: board3.id, name: "label#{i+1}", color: "#FF0068").id
+    description: "Esta es la descripción de la task #{i+1}",
+    label_id: Label.create(user_id: user3.id, board_id: board3.id, name: "label #{i+1}", color: "#FF0068").id
   )
 end

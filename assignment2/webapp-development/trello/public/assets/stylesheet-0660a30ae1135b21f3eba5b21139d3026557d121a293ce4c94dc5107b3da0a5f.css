@@ -1,0 +1,74 @@
+.card {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    height: 500px;
+    margin-left: 140px;
+    width: 800px;
+}
+
+#footer{
+    margin-top: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url(/assets/dark-blur-e28743cc9cd79cfd3460074b4e7e60848392f3e64c0a87707906bd2195b7ef3c.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+#vertical-navbar {
+    margin-top: 20px;
+}
+
+#vertical-navbar {
+    background-color: #f8f9fa;  
+    padding: 20px;
+    border-right: 150px solid #f8f9fa;
+  }
+
+.nav-item {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #343a40;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+.nav-item:hover {
+    background-color: #e9ecef;
+    border-radius: 10px;
+}
+
+#show-board-card {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    height: 700px;
+    margin-left: 10px;
+    width: 1200px;
+}
+
+#home-h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 230px;
+    color: #f8f9fa;
+}
+
+#boards-h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 430px;
+    color: #f8f9fa;
+}
+
+#state-card {
+    margin-left: -1px;
+}
+  
