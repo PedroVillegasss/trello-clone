@@ -3,28 +3,19 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Board</th>
-      <th scope="col">Name</th>
       <th scope="col">Creation</th>
-      <th scope="col">Go to</th>
+      <th scope="col">Show</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
+
+      <tbody>
+        <% Board.all.each_with_index do |board, index| %>
+          <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= board.name %></td>
+            <td><%= board.created_at.strftime('%Y-%m-%d') %></td>
+            <td><a href="#" class="card-link"><%= link_to 'Go to', board_path(board), class: 'btn btn-secondary' %></a></td>
+          </tr>
+        <% end %>
+      </tbody>
 </table>

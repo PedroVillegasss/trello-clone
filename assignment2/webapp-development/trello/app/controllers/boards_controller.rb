@@ -11,4 +11,8 @@ class BoardsController < ApplicationController
     id = params['id']
     @board = Board.find(id)
   end
+
+  def table
+    @boards = Board.all
+  end
 end

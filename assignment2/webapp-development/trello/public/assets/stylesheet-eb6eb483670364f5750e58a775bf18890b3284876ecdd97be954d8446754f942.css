@@ -1,0 +1,106 @@
+.card {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    height: 600px;
+    margin-left: 100px;
+    width: 800px;
+}
+
+#footer{
+    margin-top: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url(/assets/dark-blur-e28743cc9cd79cfd3460074b4e7e60848392f3e64c0a87707906bd2195b7ef3c.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+#vertical-navbar {
+    margin-top: 20px;
+}
+
+#vertical-navbar {
+    background-color: #f8f9fa;  
+    padding: 20px;
+    border-right: 150px solid #f8f9fa;
+  }
+
+.nav-item {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #343a40;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+.nav-item:hover {
+    background-color: #e9ecef;
+    border-radius: 10px;
+}
+
+/* #show-board-card {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    height: 700px;
+    margin-left: 10px;
+    width: 600px;
+} */
+
+#home-h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 190px;
+    color: #f8f9fa;
+}
+
+#boards-h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 380px;
+    color: #f8f9fa;
+}
+
+#state-card {
+    margin-left: 8px;
+    background-color: #f8f9fa;
+}
+  
+#task-card {
+    margin-left: 8px;
+    background-color: #f8f9fa
+}
+
+#show-state-card {
+    margin-left: 7px;
+    background-color: #f8f9fa;
+    width: 200px;
+    margin-right: 5px;
+    height: 450px
+}
+  
+#show-task-card {
+    margin-left: -1px;
+    background-color: #f8f9fa;
+    width: 170px;
+    margin-right: 5px;
+    height: 80px
+}
+
+.table {
+    margin-left: 40px;
+    margin-top: 20px;
+    text-align: center;
+    width: 900px;
+}
+
+th, td {
+    text-align: center;
+}
