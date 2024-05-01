@@ -21581,3 +21581,175 @@ Processing by BoardsController#home as HTML
 Completed 200 OK in 40ms (Views: 34.1ms | ActiveRecord: 5.1ms | Allocations: 10480)
 
 
+Started GET "/boards/14" for 127.0.0.1 at 2024-05-01 16:25:10 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mBoard Load (0.7ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:12:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mState Load (0.4ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."board_id" = $1[0m  [["board_id", 14]]
+  ↳ app/views/boards/show.html.erb:5
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 53]]
+  ↳ app/views/boards/show.html.erb:10
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 54]]
+  ↳ app/views/boards/show.html.erb:10
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 55]]
+  ↳ app/views/boards/show.html.erb:10
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 56]]
+  ↳ app/views/boards/show.html.erb:10
+  Rendered boards/show.html.erb within layouts/application (Duration: 123.5ms | Allocations: 26557)
+  Rendered layout layouts/application.html.erb (Duration: 136.1ms | Allocations: 28844)
+Completed 200 OK in 266ms (Views: 138.7ms | ActiveRecord: 22.5ms | Allocations: 58878)
+
+
+Started GET "/boards/14" for 127.0.0.1 at 2024-05-01 16:25:41 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mBoard Load (1.9ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:12:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mState Load (0.7ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."board_id" = $1[0m  [["board_id", 14]]
+  ↳ app/views/boards/show.html.erb:5
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 53]]
+  ↳ app/views/boards/show.html.erb:10
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 54]]
+  ↳ app/views/boards/show.html.erb:10
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 55]]
+  ↳ app/views/boards/show.html.erb:10
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 56]]
+  ↳ app/views/boards/show.html.erb:10
+  Rendered boards/show.html.erb within layouts/application (Duration: 215.5ms | Allocations: 26557)
+  Rendered layout layouts/application.html.erb (Duration: 230.7ms | Allocations: 28853)
+Completed 200 OK in 432ms (Views: 252.2ms | ActiveRecord: 27.0ms | Allocations: 58888)
+
+
+Started GET "/boards" for 127.0.0.1 at 2024-05-01 16:25:44 -0400
+Processing by BoardsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.5ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:6
+  [1m[36mState Load (0.4ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."board_id" = $1[0m  [["board_id", 13]]
+  ↳ app/views/boards/index.html.erb:11
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 49]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 50]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 51]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 52]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mState Load (0.6ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."board_id" = $1[0m  [["board_id", 14]]
+  ↳ app/views/boards/index.html.erb:11
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 53]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 54]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 55]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 56]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."board_id" = $1[0m  [["board_id", 15]]
+  ↳ app/views/boards/index.html.erb:11
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 57]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 58]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 59]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 60]]
+  ↳ app/views/boards/index.html.erb:16
+  Rendered boards/index.html.erb within layouts/application (Duration: 47.9ms | Allocations: 10001)
+  Rendered layout layouts/application.html.erb (Duration: 49.9ms | Allocations: 10570)
+Completed 200 OK in 51ms (Views: 44.9ms | ActiveRecord: 5.6ms | Allocations: 10884)
+
+
+Started GET "/boards/13" for 127.0.0.1 at 2024-05-01 16:25:45 -0400
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:12:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mState Load (0.5ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."board_id" = $1[0m  [["board_id", 13]]
+  ↳ app/views/boards/show.html.erb:5
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 49]]
+  ↳ app/views/boards/show.html.erb:10
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 50]]
+  ↳ app/views/boards/show.html.erb:10
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 51]]
+  ↳ app/views/boards/show.html.erb:10
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 52]]
+  ↳ app/views/boards/show.html.erb:10
+  Rendered boards/show.html.erb within layouts/application (Duration: 18.1ms | Allocations: 3055)
+  Rendered layout layouts/application.html.erb (Duration: 19.7ms | Allocations: 3624)
+Completed 200 OK in 22ms (Views: 17.1ms | ActiveRecord: 3.6ms | Allocations: 4289)
+
+
+Started GET "/boards" for 127.0.0.1 at 2024-05-01 16:25:49 -0400
+Processing by BoardsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.5ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:6
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."board_id" = $1[0m  [["board_id", 13]]
+  ↳ app/views/boards/index.html.erb:11
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 49]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 50]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 51]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 52]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."board_id" = $1[0m  [["board_id", 14]]
+  ↳ app/views/boards/index.html.erb:11
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 53]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 54]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 55]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 56]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."board_id" = $1[0m  [["board_id", 15]]
+  ↳ app/views/boards/index.html.erb:11
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 57]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 58]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 59]]
+  ↳ app/views/boards/index.html.erb:16
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 60]]
+  ↳ app/views/boards/index.html.erb:16
+  Rendered boards/index.html.erb within layouts/application (Duration: 41.8ms | Allocations: 9590)
+  Rendered layout layouts/application.html.erb (Duration: 44.4ms | Allocations: 10151)
+Completed 200 OK in 46ms (Views: 38.5ms | ActiveRecord: 6.9ms | Allocations: 10400)
+
+
+Started GET "/boards/13" for 127.0.0.1 at 2024-05-01 16:26:10 -0400
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:12:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT "states".* FROM "states" WHERE "states"."board_id" = $1[0m  [["board_id", 13]]
+  ↳ app/views/boards/show.html.erb:5
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 49]]
+  ↳ app/views/boards/show.html.erb:10
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 50]]
+  ↳ app/views/boards/show.html.erb:10
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 51]]
+  ↳ app/views/boards/show.html.erb:10
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."state_id" = $1[0m  [["state_id", 52]]
+  ↳ app/views/boards/show.html.erb:10
+  Rendered boards/show.html.erb within layouts/application (Duration: 12.3ms | Allocations: 3055)
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | Allocations: 3603)
+Completed 200 OK in 17ms (Views: 13.8ms | ActiveRecord: 1.8ms | Allocations: 4267)
+
+
