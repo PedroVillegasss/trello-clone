@@ -133,3 +133,12 @@ th {
 #board-card-title {
     font-weight: 600;
 }
+
+#home-cards-container{
+    margin-left: -20px;
+    margin-top: 40px;
+}
+
+#home-card{
+    width: 800px;
+}

@@ -1,0 +1,144 @@
+.card {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    height: 600px;
+    margin-left: 100px;
+    width: 800px;
+}
+
+#footer{
+    margin-top: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url(/assets/dark-blur-e28743cc9cd79cfd3460074b4e7e60848392f3e64c0a87707906bd2195b7ef3c.png);
+    background-size: cover;
+    background-repeat: repeat;
+}
+
+
+#vertical-navbar {
+    margin-top: 20px;
+}
+
+#vertical-navbar {
+    background-color: rgba(111, 109, 109, 0);  
+    padding: 20px;
+    border-right: 150px solid rgba(111, 109, 109, 0);
+  }
+
+.nav-item {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #343a40;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+.nav-item:hover {
+    background-color: #e9ecef;
+    border-radius: 10px;
+}
+
+/* #show-board-card {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    height: 700px;
+    margin-left: 10px;
+    width: 600px;
+} */
+
+#home-h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 190px;
+    color: #f8f9fa;
+}
+
+#boards-h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 380px;
+    color: #f8f9fa;
+}
+
+#state-card {
+    margin-left: 8px;
+    background-color: #f8f9faa5;
+    font-size: bold;
+}
+  
+#task-card {
+    margin-left: 8px;
+    background-color: #f8f9fa67
+}
+
+#show-state-card {
+    margin-left: 7px;
+    background-color: #f8f9faa5;
+    width: 200px;
+    margin-right: 5px;
+    height: 500px
+}
+  
+#show-task-card {
+    margin-left: -1px;
+    background-color: #f8f9faa5;
+    width: 170px;
+    margin-right: 5px;
+    height: 80px
+}
+
+.table {
+    margin-left: 40px;
+    margin-top: 20px;
+    text-align: center;
+    width: 960px;
+    border-collapse: collapse; 
+    border-radius: 10px; 
+    overflow: hidden; 
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+th {
+    background-color: rgba(255, 255, 255, 0.705); 
+}
+
+/* Para que el navbar se oculte */
+@media (max-width: 1200.98px) {
+    .col-auto.bg-transparent-white {
+        display: none;
+    }
+
+    .col-auto.content {
+        flex: 1;
+    }
+}
+
+.bg-transparent-white {
+    background-color: rgba(206, 206, 206, 0.5);
+}
+
+  
+#board-card-title {
+    font-weight: 600;
+}
+
+#home-cards-container{
+    margin-left: -5px;
+    margin-top: 20px;
+}
+
+#home-card{
+    width: 400px;
+}
