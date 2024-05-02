@@ -69,8 +69,7 @@ end
     name: "Task #{i+1}",
     priority: rand(1..3),
     description: "Esta es la descripción de la task #{i+1}",
-    label_id: Label.create(user_id: user1.id, board_id: board1.id, name: "label #{i+1}", color: "#F89865").id
-  )
+    label_id: Label.create(user_id: user1.id, board_id: board1.id, name: "label #{i+1}", color: "#F89865")).id
 end
 
 5.times do |i|
@@ -81,8 +80,7 @@ end
     name: "Task #{i+1}",
     priority: rand(1..3),
     description: "Esta es la descripción de la task #{i+1}",
-    label_id: Label.create(user_id: user2.id, board_id: board2.id, name: "label #{i+1}", color: "#000000").id
-  )
+    label_id: Label.create(user_id: user2.id, board_id: board2.id, name: "label #{i+1}", color: "#F89865")).id
 end
 
 5.times do |i|
@@ -93,6 +91,5 @@ end
     name: "Task #{i+1}",
     priority: rand(1..3),
     description: "Esta es la descripción de la task #{i+1}",
-    label_id: Label.create(user_id: user3.id, board_id: board3.id, name: "label #{i+1}", color: "#FF0068").id
-  )
+    label_id: Label.create(user_id: user3.id, board_id: board3.id, name: "label #{i+1}", color: "#F89865")).id
 end
