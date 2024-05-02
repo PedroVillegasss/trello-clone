@@ -1,15 +1,16 @@
-<%# <h1 id="home-h1">Lastest three created boards</h1> %>
-
 <div class="container">
   <div class="container" id="home-cards-container">
     <% @boards_limited.each do |board| %>
     <%# No esta funcionando agregarle el hover a esta card en el css %>
-    <a href="<%= board_path(board) %>" class="card" id="home-card" style="height: 150px; background-color: rgba(206, 206, 206, 0.5); display: block; text-decoration: none;"
-       onmouseover="this.style.backgroundColor='#e9ecef'" onmouseout="this.style.backgroundColor='rgba(206, 206, 206, 0.5)'">
+    <a href="<%= board_path(board) %>" class="card" id="home-card" style="height: 150px; background-color: <%=board.color%>; display: block; text-decoration: none;"
+       onmouseover="this.style.backgroundColor='<%=board.color%>99'" onmouseout="this.style.backgroundColor='<%=board.color%>'">
       <div class="card-body" style="text-decoration: none;">
         <h5 class="card-title"><%= board.name %></h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary"><%= board.created_at.strftime("%d/%m/%Y") %></h6>
+        <h6 class="card-subtitle mb-2 text-body-secondary"><%= User.find(board.user_id).name %></h6>
       </div>
     </a>
+      <hr style="width: 700px; color: white; margin-left: 150px;">
     <% end %>
   </div>
 </div>

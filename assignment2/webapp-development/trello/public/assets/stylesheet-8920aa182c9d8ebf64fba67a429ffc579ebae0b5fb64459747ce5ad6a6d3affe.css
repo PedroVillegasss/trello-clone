@@ -13,7 +13,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: url('dark-blur.png');
+    background-image: url(/assets/dark-blur-e28743cc9cd79cfd3460074b4e7e60848392f3e64c0a87707906bd2195b7ef3c.png);
     background-size: cover;
     background-repeat: repeat;
 }
@@ -53,6 +53,20 @@ body {
     margin-left: 10px;
     width: 600px;
 } */
+
+#home-h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 190px;
+    color: #f8f9fa;
+}
+
+#boards-h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 380px;
+    color: #f8f9fa;
+}
 
 #state-card {
     margin-left: 8px;
@@ -129,23 +143,9 @@ th {
     width: 800px;
 }
 
-#home-h1 {
-    font-size: 50px;
-    font-weight: bold;
-    margin-left: 190px;
-    color: #f8f9fa;
-}
-
-#index-h1 {
-    font-size: 50px;
-    font-weight: bold;
-    margin-left: 380px;
-    color: #f8f9fa;
-}
-
-#table-h1 {
-font-size: 50px;
-font-weight: bold;
-margin-left: 380px;
-color: #f8f9fa;
+#home-hr {
+    color: #e9ecef;
+    background-color: #e9ecef; 
+    height: 2px; 
+    border: none; 
 }

@@ -1,6 +1,5 @@
 <%# Ojo que para index uso @boards y no @boards_limited (revisar el controlador por si hay dudas en la diferencia) %>
 
-<%# <h1 id="boards-h1">All boards</h1> %>
 <div class="container">
   <% @boards.each do |board| %>
     <a href="<%= board_path(board) %>" class="card-link" style="text-decoration: none;">
@@ -28,5 +27,6 @@
         </div>
       </div>
     </a>
+    <hr style="width: 700px; color: white; margin-left: 150px;">
   <% end %>
 </div>

@@ -13,7 +13,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: url('dark-blur.png');
+    background-image: url(/assets/dark-blur-e28743cc9cd79cfd3460074b4e7e60848392f3e64c0a87707906bd2195b7ef3c.png);
     background-size: cover;
     background-repeat: repeat;
 }
@@ -144,8 +144,8 @@ th {
 }
 
 #table-h1 {
-font-size: 50px;
-font-weight: bold;
-margin-left: 380px;
-color: #f8f9fa;
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 380px;
+    color: #f8f9fa;
 }
