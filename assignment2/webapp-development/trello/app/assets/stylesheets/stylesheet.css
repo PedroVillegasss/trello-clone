@@ -149,3 +149,12 @@ font-weight: bold;
 margin-left: 380px;
 color: #f8f9fa;
 }
+
+.container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+#home-cards-container {
+    overflow-x: hidden;
+}
