@@ -1,2 +1,120 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(5,5,5);
+}
+
+p {
+    color: #D1D5DB;
+    font-size: 18px;
+    font-weight: 28px;
+}
+
+h1 {
+    color: #D1D5DB;
+    font-size: 30px;
+    font-weight: 36px;
+}
+
+h3 {
+    color: #D1D5DB;
+    font-size: 20px;
+    font-weight: 32px;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+th {
+    background-color: rgba(255, 255, 255, 0.705); 
+}
+
+hr {
+    width: 700px; 
+    color: white; 
+}
+
+.card {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    height: 600px;
+    width: 800px;
+}
+
+#state-card {
+    background-color: #f8f9faa5;
+    font-size: bold;
+    width: 150px; 
+    height: 350px; 
+    margin-right: 5px
+}
+
+#task-card {
+    background-color: #f8f9fa67;
+    width: 100px; 
+    height: 50px; 
+    margin-top: 10px
+}
+
+#show-state-card {
+    background-color: #f8f9faa5;
+    width: 200px;
+    margin-right: 5px;
+    height: 500px
+}
+  
+#show-task-card {
+    background-color: #f8f9faa5;
+    width: 170px;
+    margin-right: 5px;
+    height: 80px
+}
+
+#show-board-card {
+    margin-top: 20px; 
+    margin-bottom: 10px; 
+    color: black; 
+    height: 700px; 
+    width: 960px; 
+}
+
+.table {
+    margin-top: 20px;
+    text-align: center;
+    width: 960px;
+    border-collapse: collapse; 
+    border-radius: 10px; 
+    overflow: hidden; 
+}
+
+#board-card-title {
+    font-weight: 600;
+}
+
+#home-card{
+    width: 200px;
+    height: 120px;
+}
+
+#home-h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: #f8f9fa;
+}
+
+#index-h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: #f8f9fa;
+}
+
+#table-h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: #f8f9fa;
+}
