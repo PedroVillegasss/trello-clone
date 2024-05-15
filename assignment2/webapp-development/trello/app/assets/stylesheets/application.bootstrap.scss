@@ -16,7 +16,7 @@ p {
 }
 
 h1 {
-    color: #D1D5DB;
+    color: #ffffff;
     font-size: 30px;
     font-weight: 36px;
 }
@@ -35,12 +35,6 @@ th, td {
 th {
     background-color: rgba(255, 255, 255, 0.705); 
 }
-
-hr {
-    width: 700px; 
-    color: white; 
-}
-
 
 .container {
     width: 100%;
@@ -163,7 +157,7 @@ hr {
 }
 
 .create-button button {
-    background-color: rgb(42, 128, 248);
+    background-color: rgb(220,38,38);
     color: rgb(255, 255, 255);
     font-weight: bold;
     border: none;
@@ -175,13 +169,34 @@ hr {
 }
 
 .create-button button:hover {
-    background-color: rgb(87,157,255);
+    background-color: rgb(133, 22, 22);
 }
 
 .navbar-brand:hover {
     color: inherit
 }
 
-#test {
+#nav-item-not-brand {
     padding-top: 2px;
 }
+
+.card-img-top {
+    width: 100%;
+    height: 180px; 
+}
+
+.board-link {
+    text-decoration: none;
+    color: inherit;
+}
+  
+.board-link:hover {
+    text-decoration: underline;
+}
+
+.home-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+  
