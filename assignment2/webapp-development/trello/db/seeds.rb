@@ -48,6 +48,14 @@ team1 = Team.create(name:"grupo17")
 board1 = Board.create(user_id: user1.id, team_id: team1.id, name:"Projecto TPI", color:"#A6DD9B", is_public: true)
 board2 = Board.create(user_id: user2.id, name:"Buk App", color:" #EABEB0", is_public: true)
 board3 = Board.create(user_id: user3.id, name:"Personal", color:"#9BB8D3", is_public: true)
+board4 = Board.create(user_id: user1.id, name:"Universidad", color:"#ea0f6b", is_public: true)
+board5 = Board.create(user_id: user1.id, name:"Business", color:"#c4d8e2", is_public: true)
+board6 = Board.create(user_id: user1.id, name:"Gimnasio", color:"#009e0f", is_public: true)
+board7 = Board.create(user_id: user1.id, name:"Web Technologies", color:"#c4008c", is_public: true)
+board8 = Board.create(user_id: user1.id, name:"Sistemas Embebidos", color:"#0051ba", is_public: true)
+board9 = Board.create(user_id: user1.id, name:"Modelos Estocásticos", color:"#35c4af", is_public: true)
+board10 = Board.create(user_id: user1.id, name:"Banchile", color:"#cc0c00", is_public: true)
+
 
 states1 = (1..4).map do |position|
   board1.states.create(name: "State #{position}", position: position)
