@@ -1,3 +1,35 @@
+<div class="container">
+    <nav class="navbar" id="show-navbar">
+            <li class="nav-item" id='nav-item-not-brand'>
+                <span style="font-weight: bold; font-size: 20px"><%=@board.name %> </span>
+            </li>
+    </nav>
+</div>
+
+
+<div class="home-card-container">
+  <% @board.states.each do |state| %>
+    <div class="card" id="show-states-card">
+      <div class="card-body">
+        <h5 class="card-title" id="show-state-title"> <%= state.name%></h5>
+        <div class="task-list">
+          <% state.tasks.each do |task| %>  
+            <div class="task-card">
+              <div class="task-card-body">
+                <p class="card-text" id="show-task-name"><%= task.name %> </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+<!--
+<div class="container" style="margin-top: 40px">
 <div id="show-board-card" class="card" style="background-color: <%= @board.color %>">    
 <div class="card-body d-flex flex-column">
     <h5 class="card-title" id="board-card-title"><%= @board.name %></h5>
@@ -23,6 +55,7 @@
     <div class="text-center mt-auto">
       <a href="#" class="card-link"><%= link_to 'Go back', boards_path, class: 'btn btn-secondary' %></a>
     </div>
-  
     </div>
 </div>
+</div>
+-->
