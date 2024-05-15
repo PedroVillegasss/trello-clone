@@ -3,7 +3,10 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: rgb(5,5,5);
+    background-color: rgb(23,23,23);
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 p {
@@ -36,6 +39,12 @@ th {
 hr {
     width: 700px; 
     color: white; 
+}
+
+
+.container {
+    width: 100%;
+    margin-top: 80px;
 }
 
 .card {
@@ -117,4 +126,62 @@ hr {
     font-size: 50px;
     font-weight: bold;
     color: #f8f9fa;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // background-color: rgb(70, 70, 70);
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; 
+    border-bottom: 2px solid rgb(70, 70, 70)
+}
+
+.nav-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    color: white;
+}
+
+.nav-item {
+    margin-right: 20px;
+    color: white;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.create-button button {
+    background-color: rgb(42, 128, 248);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    border: none;
+    border-radius: 10%;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+.create-button button:hover {
+    background-color: rgb(87,157,255);
+}
+
+.navbar-brand:hover {
+    color: inherit
+}
+
+#test {
+    padding-top: 2px;
 }
