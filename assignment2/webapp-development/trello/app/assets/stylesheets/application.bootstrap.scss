@@ -45,8 +45,6 @@ th {
     margin-top: 20px;
     margin-bottom: 20px;
     color: black;
-    height: 600px;
-    width: 800px;
 }
 
 #state-card {
@@ -217,18 +215,23 @@ th {
 
 #show-states-card{
     width: 15rem; 
-    height: 15rem;
+    // height: 15rem;
+    min-height: 5rem;
     margin-right: 6rem;
     margin-top: 3rem;
-    margin-left: -5rem;
+    margin-left: -4rem;
     background-color: rgb(16, 18, 4);
     color: rgb(146,156,163);
     border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .task-list {
-    max-height: 200px; 
+    max-height: none; 
     overflow-y: auto; 
+    flex-grow: 1;
 }
 
 #show-state-title{
