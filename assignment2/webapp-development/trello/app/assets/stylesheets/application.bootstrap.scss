@@ -171,6 +171,28 @@ th {
     background-color: rgb(133, 22, 22);
 }
 
+.login-button button {
+    background-color: rgb(36, 36, 255);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    border: none;
+    border-radius: 10%;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+.login-button button:hover {
+    background-color: rgb(20, 20, 134);
+}
+
+.button-container{
+    display: flex;
+    gap: 5px;
+}
+
+
 .navbar-brand:hover {
     color: inherit
 }
