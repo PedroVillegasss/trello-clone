@@ -6,7 +6,7 @@ class LabelsController < ApplicationController
   def create
     @label = Label.new(label_params)
     if @label.save!
-      redirect_to boards_path
+      redirect_to board_path(@label.board_id)
     else
       render :new
     end
