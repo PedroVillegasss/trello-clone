@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get '/home', to: 'boards#home'
   get '/table', to: 'static_pages#table'
 
-  resources :boards # TO DO > Board creation with the 'Create' button in the navbar -> with nested_form to create tasks, labels ...?
-  resources :users  # TO DO > User creation with the 'Log in' button in the navbar
+  resources :boards
+  resources :users
   resources :tasks  # TO DO > Task creation with the 'Add a task' button in the board/show page
   resources :labels  # TO DO > Label creation with the 'Add a label' button in the dropdown menu of the board/show page
   resources :states  # TO DO > State creation with the 'Add a state' button in the dropdown menu of the board/show page
