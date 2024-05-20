@@ -349,3 +349,26 @@ th {
     width: 30%;
     margin: 0 auto;
 }
+
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+.card {
+    transition: transform 0.15s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card-subtitle {
+    font-weight: bold;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+  
