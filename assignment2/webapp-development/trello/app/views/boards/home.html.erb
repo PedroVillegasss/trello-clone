@@ -4,7 +4,7 @@
 
 <p>Your latest three created boards</p>
 
-<hr style="width: 44rem; border-width: 2px; color: white">
+<hr style="width: 59rem; border-width: 2px; color: white">
 
 <div class="home-card-container">
   <% @boards_limited.each do |board| %>
@@ -19,4 +19,17 @@
       </a>
     </div>
   <% end %>
+
+  <div class="home-card-container" id="create-home-card-container">
+    <div class="card" style="width: 14rem; height: 16rem; margin-right: 1rem">
+      <a href="<%= new_board_path() %>" class="board-link">
+        <img class="card-img-top" style="background-color: grey; display: block; text-decoration: none;">
+        <div class="card-body">
+          <h5 class="card-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; max-width: 100%;">Create a new board</h5>
+        </div>
+      </a>
+    </div>
 </div>
+</div>
+
+
