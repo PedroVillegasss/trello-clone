@@ -1,0 +1,46 @@
+<h1 style="display: flex; align-items: center;">
+<svg xmlns="http://www.w3.org/2000/svg" width=40px height=40px viewBox="0 0 24 24" fill="none"><path d="M17 8C17 10.7614 14.7614 13 12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8Z" stroke="white" stroke-width="2"></path><path d="M3 21C3.95728 17.9237 6.41998 17 12 17C17.58 17 20.0427 17.9237 21 21" stroke="white" stroke-width="2" stroke-linecap="round"></path></svg>
+<span style="margin-left: 10px;">Users</span>
+</h1>
+
+<hr style="width: 59rem; border-width: 2px; color: white;">
+
+<%= link_to new_user_path(), style: "text-decoration: none; color: inherit;" do %>
+  <div class="card border-0 shadow-sm mb-3" style="background-color: grey; width: 59rem">
+    <div class="card-body p-3">
+      <div class="d-flex align-items-center mb-2 justify-content-between">
+        <h6 class="card-subtitle mb-0">
+          Create a new user
+        </h6>
+      </div>
+      <br>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+<% @users.each do |user| %>  
+    <div class="card border-0 shadow-sm mb-3" style="background-color: white; width: 59rem">
+    <div class="card-body p-3">
+      <div class="d-flex align-items-center mb-2 justify-content-between">
+        <h6 class="card-subtitle mb-0">
+          <%= user.name %>
+        </h6>
+      </div>
+
+      <br>
+
+      <div class="d-flex justify-content-between">
+        <div>
+            <a href="#" class="card-link"><%= link_to 'Show', user_path(user), class: 'btn p-0 mr-2', style: 'color: rgb(220, 38, 38); font-weight: bold'%></a>
+            <a href="#" class="card-link"><%= link_to 'Edit', edit_user_path(user), class: 'btn p-0 mr-2', style: 'color: rgb(220, 38, 38); font-weight: bold'%></a>
+            <a href="#" class="card-link"><%= link_to 'Destroy', user, data: { turbo_confirm: 'Are you sure?', turbo_method: "delete"}, class: 'btn p-0 mr-2', style: 'color: rgb(220, 38, 38); font-weight: bold'%></a>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
