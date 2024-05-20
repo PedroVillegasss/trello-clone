@@ -1,8 +1,19 @@
 <div class="container">
   <nav class="navbar" id="show-navbar">
-    <li class="nav-item" id='nav-item-not-brand'>
-      <span style="font-weight: bold; font-size: 20px"><%= @board.name %></span>
+    <li class="nav-item d-flex align-items-center">
+      <span style="font-weight: bold; font-size: 20px;"><%= @board.name %></span>
+      
+      <% @board.labels.each do |label| %>
+        <div class="d-flex" style="margin-left: 15px;">
+          <div class="card" style="width: 60px; height: 20px; background-color: <%= label.color %>">
+            <div class="card-body p-2 text-center">
+            </div>
+          </div>
+        </div>
+      <% end %>
+  
     </li>
+
 
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">

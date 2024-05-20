@@ -202,10 +202,14 @@ th {
     margin-right: 25px;
 }
 
-#nav-item-not-brand:hover{
-    background-color: rgba(92, 96, 99);
-    border-radius: 10px;
+#nav-item-not-brand:hover {
+    text-decoration: underline; 
+    text-decoration-color: rgb(220,38,38);
+    text-decoration-skip: none;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
 }
+
 
 .card-img-top {
     width: 100%;
@@ -246,7 +250,7 @@ th {
     // height: 15rem;
     min-height: 5rem;
     margin-right: 6rem;
-    margin-top: 3rem;
+    margin-top: 4rem;
     margin-left: -4rem;
     background-color: rgb(16, 18, 4);
     color: rgb(146,156,163);

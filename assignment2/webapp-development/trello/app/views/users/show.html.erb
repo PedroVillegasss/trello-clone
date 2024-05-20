@@ -1,0 +1,38 @@
+<h1>Profile of <%= @user.name %></h1>
+<h2>Email: <%= @user.email %> </h2>
+
+<div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name of board</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user_boards.each do |board| %>
+          <tr>
+            <td><%= board.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+
+<div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+            <th>task asignee</th>
+            <th>Board</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tasks.each do |task| %>
+          <tr>
+            <td><li><%= link_to task.name, task_path(task) %> - <%= task.state.name if task.state %></li></td>
+            <td><%= task.state.board.name if task.state && task.state.board %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

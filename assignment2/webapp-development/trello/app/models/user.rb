@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_many :boards, dependent: :destroy
   has_many :labels
   has_many :informer_tasks, class_name: 'Task', foreign_key: 'informer_user_id'
-  has_many :assignee_tasks, class_name: 'Task', foreign_key: 'informer_user_id'
+  has_many :assignee_tasks, class_name: 'Task', foreign_key: 'assignee_user_id'
   has_many :task_comments
 
   has_many :user_boards
