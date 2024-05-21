@@ -1,0 +1,21 @@
+<div class="overlay-container">
+  <div class="board-view">
+    <%= render 'boards/show', board: @label.board %>
+  </div>
+
+  <div class="label-details">
+    <div class="card label-card" style="width: 20rem; height: 13rem; background-color: <%= @label.color %>;">
+      <div class="card-body">
+        <h2 class="card-title"><%= @label.name %></h2>
+        <p class="card-subtitle"><%= @label.user.name %></p>
+        <br>
+      </div>
+      <div class="card-footer">
+        <%= link_to 'Edit', edit_label_path(@label), class: 'btn btn-danger mr-2' %>
+        <%= link_to 'Destroy', @label, data: { turbo_confirm: 'Are you sure?', turbo_method: "delete" }, class: 'btn btn-danger mr-2' %>
+        <%= link_to 'Back', board_path(@label.board), class: 'btn btn-danger mr-2' %>
+      </div>
+    </div>
+  </div>
+</div>
+
