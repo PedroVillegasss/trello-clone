@@ -16,8 +16,9 @@
     <div class="container-custom text-center">
         <div class="flash-messages">
             <% flash.each do |type, message| %>
-            <div class="custom-alert alert alert-<%= type %>">
+            <div class="custom-alert alert alert-<%= type == :error ? 'danger' : type %> alert-dismissible fade show" style="position: relative; padding-right: 2.5rem;">
                 <%= message %>
+                <button type="button" class="btn-close-md" data-bs-dismiss="alert" aria-label="Close" style="position: absolute; top: 0.5rem; right: 0.5rem;"></button>
             </div>
             <% end %>
         </div>

@@ -38,8 +38,8 @@ class BoardsController < ApplicationController
 	def update
 		@board = Board.find(params[:id])
 		if @board.update board_params
-			flash[:notice] = "Board update successfully"
-			redirect_to boards_path
+			flash[:notice] = "Board updated successfully"
+			redirect_to board_path
 		else
 			flash[:error] = "Board update failed"
 			render :edit
