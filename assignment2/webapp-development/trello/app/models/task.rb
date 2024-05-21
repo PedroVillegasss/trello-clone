@@ -7,4 +7,9 @@ class Task < ApplicationRecord
 
   has_many :user_tasks
   has_many :users, :through => :user_tasks
+
+  validates :state_id, presence: { message: "The task should have a state_id" }, numericality: {only_integer: true, message: "Must be a valid id"}
+  validates :informer_user_id_id, presence: { message: "The task should have a informer_user_id" }, numericality: {only_integer: true, message: "Must be a valid id"}
+  validates :name, presence: { message: "The task should have a name" }
+
 end

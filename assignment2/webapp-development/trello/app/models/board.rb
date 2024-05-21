@@ -10,6 +10,8 @@ class Board < ApplicationRecord
 
   after_create :create_default_states
 
+  validates :user_id, presence: { message: "The board should have a user_id (creator)" }, numericality: {only_integer: true, message: "Must be a valid id"}
+  validates :name, presence: { message: "The board should have a name" }
 
   private
 
