@@ -17,6 +17,30 @@ class StatesController < ApplicationController
     end
   end
 
+  def destroy
+		@state = State.find(params[:id])
+    @board = @state.board
+    @state.destroy
+		flash[:notice] = "State deleted successfully"
+		redirect_to board_path(@board)
+  end
+
+  def edit
+		@state = State.find(params[:id])
+	end
+
+	def update
+		@state = State.find(params[:id])
+    @board = @state.board
+		if @state.update state_params
+			flash[:notice] = "State updated successfully"
+			redirect_to board_path(@board)
+		else
+			flash[:error] = "State update failed"
+			render :edit
+		end
+	end
+
   private
 
 	def state_params
