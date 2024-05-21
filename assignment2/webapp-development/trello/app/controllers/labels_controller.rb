@@ -6,8 +6,10 @@ class LabelsController < ApplicationController
   def create
     @label = Label.new(label_params)
     if @label.save!
+      flash[:notice] = "Label created successfully"
       redirect_to board_path(@label.board_id)
     else
+      flash[:error] = "Label creation failed"
       render :new
     end
   end
@@ -19,15 +21,18 @@ class LabelsController < ApplicationController
 	def update
 		@label = Label.find(params[:id])
 		if @label.update label_params
-				redirect_to board_path(@label.board_id)
+      flash[:notice] = "Label update successfully"
+			redirect_to board_path(@label.board_id)
 		else
-				render :edit
+      flash[:error] = "Label update failed"
+			render :edit
 		end
 	end
 
 	def destroy
 		@label = Label.find(params[:id])
     @label.destroy
+    flash[:notice] = "Label deleted successfully"
 		redirect_to board_path(@label.board_id)
   end
 

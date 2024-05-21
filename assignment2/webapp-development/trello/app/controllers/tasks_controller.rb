@@ -8,10 +8,10 @@ class TasksController < ApplicationController
   def create
     @task = @state.tasks.build(task_params)
     if @task.save
-      flash[:success] = "Task successfully created"
+      flash[:notice] = "Task created successfully"
       redirect_to board_path(@state.board_id)
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = "Task creation failed"
       render :new
     end
   end
@@ -23,18 +23,19 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      flash[:success] = "Task successfully updated"
+      flash[:notice] = "Task update successfully"
       redirect_to board_path(@task.state.board_id)
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = "Task update failed"
       render :edit
     end
   end
 
   def destroy
     @task = Task.find(params[:id])
+    flash[:notice] = "Task deleted successfully"
     @task.destroy
-    redirect_to board_path(@task.state.board_id), notice: "Task was successfully deleted."
+    redirect_to board_path(@task.state.board_id)
   end
 
   private

@@ -9,11 +9,11 @@ class StatesController < ApplicationController
     @board = Board.find(id)
     @state = @board.states.build(state_params)
     if @state.save
-      flash[:success] = "State successfully created"
+      flash[:notice] = "State created successfully"
       redirect_to board_path(@board)
     else
-      flash[:error] = "Something went wrong"
-      render 'new'
+      flash[:error] = "State creation failed"
+      render :new
     end
   end
 

@@ -390,7 +390,7 @@ th {
     width: 100%;
     height: 100%;
     z-index: 1;
-    opacity: 0.5; 
+    opacity: 0.55; 
 }
   
 .label-details {
@@ -403,5 +403,18 @@ th {
     padding: 20px;
     max-width: 400px;
     text-align: center;
+    opacity: 0.999999 !important
 }
   
+.custom-alert {
+    font-size: 14px;
+    color: white;
+    background-color: #1DA1F2; 
+    border-color: #1DA1F2; 
+    font-weight: bold;
+}
+
+.container-custom {
+    max-width: 150px; 
+    margin-top: 50px; 
+}

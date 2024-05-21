@@ -13,6 +13,17 @@
 
 <body>
 
+    <div class="container-custom text-center">
+        <div class="flash-messages">
+            <% flash.each do |type, message| %>
+            <div class="custom-alert alert alert-<%= type %>">
+                <%= message %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+
+
     <div class="container">
         <nav class="navbar">
             <ul class="nav-items">

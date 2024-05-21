@@ -23,9 +23,11 @@ class BoardsController < ApplicationController
 	def create
 		@board = Board.new(board_params)
 		if @board.save!
-				redirect_to boards_path
+			flash[:notice] = "Board created successfully"
+			redirect_to boards_path
 		else
-				render :new
+			flash[:error] = "Board creation failed"
+			render :new
 		end
 	end
 
@@ -36,15 +38,18 @@ class BoardsController < ApplicationController
 	def update
 		@board = Board.find(params[:id])
 		if @board.update board_params
-				redirect_to boards_path
+			flash[:notice] = "Board update successfully"
+			redirect_to boards_path
 		else
-				render :edit
+			flash[:error] = "Board update failed"
+			render :edit
 		end
 	end
 
 	def destroy
 		@board = Board.find(params[:id])
     @board.destroy
+		flash[:notice] = "Board deleted successfully"
 		redirect_to boards_path
   end
 
