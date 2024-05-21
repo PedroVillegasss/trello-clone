@@ -277,6 +277,10 @@ th {
     color: rgb(98,108,111);
 }
 
+.task-card:hover{
+    background-color: rgb(220,38,38);
+}
+
 .task-card-body {
     padding: 10px; 
 }
@@ -390,7 +394,7 @@ th {
     width: 100%;
     height: 100%;
     z-index: 1;
-    opacity: 0.55; 
+    // opacity: 0.55; 
 }
   
 .label-details {
@@ -403,7 +407,7 @@ th {
     padding: 20px;
     max-width: 400px;
     text-align: center;
-    opacity: 0.999999 !important
+    // opacity: 0.999999 !important
 }
   
 .custom-alert {

@@ -1,0 +1,22 @@
+<div class="overlay-container">
+    <div class="board-view">
+        <%= render 'boards/show', board: @board %>
+    </div>
+
+  <div class="label-details">
+    <div class="card" style="width: 20rem; height: 15rem; background-color: white;">
+      <div class="card-body">
+        <h1 class="card-title"><%= @task.name %></h1>
+        <p class="card-subtitle"><%= User.find(@task.informer_user_id_id).name %></p>
+        <br>
+        <p class="card-subtitle"><%= @task.description %></p>
+      </div>
+      <div class="card-footer">
+        <%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-danger mr-2' %>
+        <%= link_to 'Destroy', @task, data: { turbo_confirm: 'Are you sure?', turbo_method: "delete" }, class: 'btn btn-danger mr-2' %>
+        <%= link_to 'Back', board_path(Board.find(@task.state.board_id)), class: 'btn btn-danger mr-2' %>
+      </div>
+    </div>
+  </div>
+</div>
+

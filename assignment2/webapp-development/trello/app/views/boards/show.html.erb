@@ -76,13 +76,13 @@
         <h5 class="card-title" id="show-state-title"><%= state.name %></h5>
         <div class="task-list">
           <% state.tasks.each do |task| %>  
+              <%= link_to task_path(state_id: task.state.id, id: task.id), class: 'card-text', id: 'show-task-name', style: 'text-decoration: none;' do %>
             <div class="task-card">
-              <%= link_to edit_task_path(state_id: task.state.id, id: task.id), class: 'card-text', id: 'show-task-name', style: 'text-decoration: none;' do %>
               <div class="task-card-body" style="color: white">
                   <%= task.name %>
               </div>
-              <% end %>
             </div>
+              <% end %>
           <% end %>
         </div>
         <div class="add-task-button-container">

@@ -8,7 +8,7 @@
         <span style="font-weight: bold; font-size: 30px;">Trillo</span>
       </a>
 
-      <%= form_with model: [@state, @task], url: state_task_path(@state, @task), local: true, method: :patch do |f| %>
+      <%= form_with model: @task, local: true do |f| %>
       <div class="form-group mb-3">
         <%= f.hidden_field :state_id, value: @state.id %>
       </div>
@@ -48,7 +48,8 @@
         <%= f.collection_select :label_id, Label.where(board_id: @state.board_id), :id, :name, {prompt: "Label"}, {class: "form-control", required: false}%>
       </div>
 
-      <%= f.submit "Update task", class: "btn btn-primary", id: "create-task-btn" %>
+      <%= f.submit "Update task", class: "btn btn-md", id: "create-task-btn", style:"margin-bottom: 40px; background-color: rgba(220, 38, 38); color: white" %>
+    
     <% end %>
     </div>
   </div>

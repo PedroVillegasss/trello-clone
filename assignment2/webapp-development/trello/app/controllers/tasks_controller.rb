@@ -1,15 +1,20 @@
 class TasksController < ApplicationController
-  before_action :set_state, only: [:new, :create, :edit, :update, :destroy]
-
   def new
-    @task = @state.tasks.build
+    @task = Task.new(state_id: params[:state_id])
+    @state = State.find(params[:state_id])
+  end
+
+  def show
+    @task = Task.find(params[:id])
+    @state = @task.state
+    @board = @state.board
   end
 
   def create
-    @task = @state.tasks.build(task_params)
+    @task = Task.new(task_params)
     if @task.save
       flash[:notice] = "Task created successfully"
-      redirect_to board_path(@state.board_id)
+      redirect_to board_path(@task.state.board)
     else
       flash[:error] = "Task creation failed"
       render :new
@@ -18,6 +23,7 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
+    @state = @task.state
   end
 
   def update
@@ -39,10 +45,6 @@ class TasksController < ApplicationController
   end
 
   private
-
-  def set_state
-    @state = State.find(params[:state_id])
-  end
 
   def task_params
     params.require(:task).permit(:name, :informer_user_id_id, :assignee_user_id_id, :priority, :description, :label_id, :state_id)
