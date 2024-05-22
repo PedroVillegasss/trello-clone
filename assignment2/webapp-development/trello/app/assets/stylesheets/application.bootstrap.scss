@@ -428,3 +428,20 @@ th {
     max-width: 300px;
     z-index: 1000;
 }
+
+#footer-container {
+    text-align: center;
+    padding: 1rem;
+    background-color:  rgb(23,23,23);
+    color: #6c757db1;
+    margin-top: 20rem;
+}
+
+#footer-container a {
+    color: #6c757db1;
+    text-decoration: none;
+}
+
+#footer-container a:hover {
+    color: #343a40; 
+}
