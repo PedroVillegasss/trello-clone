@@ -31,6 +31,7 @@ class LabelsController < ApplicationController
 
 	def destroy
 		@label = Label.find(params[:id])
+		Task.where(label_id: @label.id).update_all(label_id: nil)
     @label.destroy
     flash[:notice] = "Label deleted successfully"
 		redirect_to board_path(@label.board_id)
