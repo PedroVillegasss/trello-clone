@@ -40,6 +40,7 @@ class TeamsController < ApplicationController
 
   def destroy
     @team = Team.find(params[:id])
+		@team.boards.update_all(team_id: nil)
     @team.destroy
     redirect_to teams_path
     flash[:notice] = "Team deleted successfully"
