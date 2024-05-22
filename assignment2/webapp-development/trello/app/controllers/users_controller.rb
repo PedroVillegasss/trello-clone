@@ -35,7 +35,9 @@ class UsersController < ApplicationController
 
 	def destroy
 		@user = User.find(params[:id])
-    @user.destroy
+		Board.where(user_id: @user.id).destroy_all
+		Task.where(assignee_user_id_id: @user.id).update_all(assignee_user_id_id: nil)
+		@user.destroy
 		flash[:notice] = "User deleted successfully"
 		redirect_to users_path
   end
