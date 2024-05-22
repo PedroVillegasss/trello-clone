@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 			flash[:notice] = "User created successfully"
 			redirect_to users_path
 		else
-			flash[:error] = "User creation failed"
 			render :new
+			flash[:error] = "User creation failed"
 		end
 	end
 
@@ -25,11 +25,11 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update user_params
-			flash[:notice] = "User update successfully"
+			flash[:notice] = "User updated successfully"
 			redirect_to users_path
 		else
-			flash[:error] = "User update failed"
 			render :edit
+			flash[:error] = "User update failed"
 		end
 	end
 
