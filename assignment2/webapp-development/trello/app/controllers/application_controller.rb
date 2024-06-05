@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
+
+  # def authenticate_user!
+  #   unless user_signed_in?
+  #     flash[:alert] = "You are not authorized to see this page"
+  #     redirect_to new_user_session_path
+  #   end
+  # end
 end
