@@ -1,4 +1,9 @@
 class StatesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
+  def index
+  end
+
   def new
     @board = Board.find(params[:board_id])
     @state = @board.states.build

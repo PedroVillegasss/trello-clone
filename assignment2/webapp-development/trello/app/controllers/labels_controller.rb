@@ -1,4 +1,9 @@
 class LabelsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
+  def index
+  end
+
   def new
     @label = Label.new(board_id: params[:board_id])
   end

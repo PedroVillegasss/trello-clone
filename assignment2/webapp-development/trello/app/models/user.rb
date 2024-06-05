@@ -9,6 +9,10 @@ class EmailValidator < ActiveModel::EachValidator
 end
 
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+
   has_many :boards, dependent: :destroy
   has_many :labels, dependent: :destroy
   has_many :informer_tasks, class_name: 'Task', foreign_key: 'informer_user_id', dependent: :destroy

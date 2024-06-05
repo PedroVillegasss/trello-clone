@@ -1,4 +1,10 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
+  def index
+    @tasks = Task.all
+  end
+
   def new
     @task = Task.new(state_id: params[:state_id])
     @state = State.find(params[:state_id])

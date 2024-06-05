@@ -58,10 +58,17 @@
                     <button type="button">Create</button>
                 </a>
                 
-                <a href="/users/new" class="signup-button">
+                <%# <a href="/users/new" class="signup-button">
                     <button type="button">Sign up</button>
-                </a>
+                </a> %>
 
+                <% if !user_signed_in? %>
+                    <%= button_to 'Log in', new_user_session_path, class: 'btn btn-primary signup-button' %>
+                <% end %>  
+
+                <% if user_signed_in? %>
+                    <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-secondary'%>
+                <% end %>
             </div>
         </nav>
     </div>
