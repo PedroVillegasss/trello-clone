@@ -306,15 +306,14 @@ th {
 
 #signup-trillo {
     align-self: center;
-    margin-top: 10px;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 
 #signup-signup-btn {
     background-color: rgb(220,38,38);
-    margin-top: 40px;
-    margin-bottom: 15px;
+    margin-top: 15px;
     align-self: center;
     color: white;
 }
@@ -444,4 +443,8 @@ th {
 
 #footer-container a:hover {
     color: #343a40; 
+}
+
+.field {
+    margin: 10px;
 }
