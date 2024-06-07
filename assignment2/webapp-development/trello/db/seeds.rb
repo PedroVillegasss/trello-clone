@@ -101,3 +101,7 @@ end
     description: "Esta es la descripción de la task #{i+1}",
     label_id: Label.create(user_id: user3.id, board_id: board3.id, name: "label #{i+1}", color: "#F89865")).id
 end
+
+UserTeam.create(user_id: 1, team_id: 1)
+UserTeam.create(user_id: 2, team_id: 1)
+UserTeam.create(user_id: 3, team_id: 1)
