@@ -38,6 +38,7 @@ class TeamsController < ApplicationController
   def show
 		@team = Team.find(params[:id])
     @team_boards = Board.where(team_id: @team)
+		@team_members = @team.users
 	end
 
   def destroy

@@ -41,6 +41,14 @@ th {
     margin-top: 80px;
 }
 
+#user-profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .card {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -448,3 +456,31 @@ th {
 .field {
     margin: 10px;
 }
+
+// Code for the accordion was learned from https://github.com/erajamanickam/simple-accordion/blob/main/assets/css/style.css
+.accordion-item .text-muted {
+    color: #ffffff;
+    // font-style: italic;
+    font-size: 15px;
+}
+
+.accordion-item {
+    margin-top: 20px;
+    border-radius: 30px !important;
+    border: none;
+}
+
+.accordion-item .accordion-button {
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.accordion-button {
+    padding: 23px !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+// Code for the accordion was learned from https://github.com/erajamanickam/simple-accordion/blob/main/assets/css/style.css

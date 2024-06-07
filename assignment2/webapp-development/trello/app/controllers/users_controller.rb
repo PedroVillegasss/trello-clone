@@ -47,8 +47,8 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
     @user_boards = Board.where(user_id: @user)
-    @teams = @user.teams
-    @tasks = @user.assignee_tasks
+    @user_teams = @user.teams
+    @user_tasks = @user.assignee_tasks
 	end
 
   private
