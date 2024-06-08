@@ -21,27 +21,43 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
+		if current_user.id == params[:id]
+			@user = User.find(params[:id])
+		else
+			flash[:notice] = "You can only edit yourself."
+			redirect_to users_path
+		end
 	end
 
 	def update
 		@user = User.find(params[:id])
-		if @user.update user_params
-			flash[:notice] = "User updated successfully"
-			redirect_to users_path
+		if current_user.id == @user.id
+			if @user.update user_params
+				flash[:notice] = "User updated successfully"
+				redirect_to users_path
+			else
+				render :edit
+				flash[:error] = "User update failed"
+			end
 		else
-			render :edit
-			flash[:error] = "User update failed"
+			flash[:notice] = "You can only edit yourself."
+			redirect_to users_path
 		end
 	end
 
 	def destroy
 		@user = User.find(params[:id])
-		Board.where(user_id: @user.id).destroy_all
-		Task.where(assignee_user_id_id: @user.id).update_all(assignee_user_id_id: nil)
-		@user.destroy
-		flash[:notice] = "User deleted successfully"
-		redirect_to users_path
+
+		if current_user.id == @user.id
+			Board.where(user_id: @user.id).destroy_all
+			Task.where(assignee_user_id_id: @user.id).update_all(assignee_user_id_id: nil)
+			@user.destroy
+			flash[:notice] = "User deleted successfully"
+			redirect_to users_path
+		else
+			flash[:notice] = "You can only destroy yourself."
+			redirect_to users_path
+		end
   end
 
 	def show
