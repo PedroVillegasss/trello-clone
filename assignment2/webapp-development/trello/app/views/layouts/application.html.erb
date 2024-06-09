@@ -65,13 +65,15 @@
                         </svg>
                     <% end %>
                 <% end %>
-
-                <%= button_to 'Create', new_board_path, class: 'btn btn-outline-secondary', style: 'color: white' %>
-
-                <%# <a href="/users/new" class="signup-button">
-                    <button type="button">Sign up</button>
-                </a> %>
                 
+                <% if user_signed_in? %>
+                    <a href="/boards/new" class="btn btn-outline-secondary" style="color: white;">Create</a>
+                <% end %>
+
+                <% if user_signed_in? %>
+                    <a href="/user_teams/new" class="btn btn-outline-secondary" style="color: white;">Join a team</a>
+                <% end %>
+
                 <% if !user_signed_in? %>
                     <%= button_to 'Log in', new_user_session_path, class: 'btn btn-outline-secondary', style: 'color: white' %>
                 <% end %>  
