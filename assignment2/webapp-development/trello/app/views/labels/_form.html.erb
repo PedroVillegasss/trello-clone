@@ -9,9 +9,6 @@
         </a>
 
         <%= form_with model: @label, local: true do |f| %>
-        <div class="form-group mb-3">
-            <%= f.collection_select :user_id, User.all, :id, :name, {prompt: "Creator"}, {class: "form-control", required: true}%>
-        </div>
 
         <%= f.hidden_field :board_id, value: @label.board_id %>
 

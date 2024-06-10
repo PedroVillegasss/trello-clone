@@ -18,6 +18,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.informer_user_id_id = current_user.id
     if @task.save
       flash[:notice] = "Task created successfully"
       redirect_to board_path(@task.state.board)
@@ -57,6 +58,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :informer_user_id_id, :assignee_user_id_id, :priority, :description, :label_id, :state_id)
+    params.require(:task).permit(:name, :assignee_user_id_id, :priority, :description, :label_id, :state_id)
   end
 end

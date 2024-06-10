@@ -10,6 +10,7 @@ class LabelsController < ApplicationController
 
   def create
     @label = Label.new(label_params)
+    @label.user = current_user
     if @label.save!
       flash[:notice] = "Label created successfully"
       redirect_to board_path(@label.board_id)
@@ -51,6 +52,7 @@ class LabelsController < ApplicationController
   private
 
     def label_params
-      params.require(:label).permit(:user_id, :board_id, :name, :color)
+      # params.require(:label).permit(:user_id, :board_id, :name, :color)
+      params.require(:label).permit(:board_id, :name, :color)
     end
 end
