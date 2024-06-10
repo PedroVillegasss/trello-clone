@@ -35,11 +35,15 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      flash[:notice] = "Task update successfully"
-      redirect_to board_path(@task.state.board_id)
+      respond_to do |format|
+        format.html { redirect_to board_path(@task.state.board_id), notice: 'Task updated successfully' }
+        format.json { render json: @task, status: :ok }
+      end
     else
-      flash[:error] = "Task update failed"
-      render :edit
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
     end
   end
 

@@ -73,7 +73,7 @@
             <% end %>
 
             <% @user_teams.each do |team| %>
-              <li><%= team.name %> on <%= team.created_at.strftime("%B %d, %Y") %></li>
+              <li> Member of <span style="font-weight: bold;"><%= team.name %></span> since <span style="font-weight: bold;"><%= team.created_at.strftime("%B %Y") %></span>.</li>
             <% end %>
           </ul>
         </div>
