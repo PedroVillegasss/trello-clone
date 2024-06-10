@@ -9,14 +9,15 @@ class BoardsController < ApplicationController
     @boards_limited = Board.order(created_at: :desc).limit(3)
   end
 
-  def show
-    id = params['id']
-    @board = Board.find(id)
-		if current_user.id != @board.user_id
+	def show
+		id = params['id']
+		@board = Board.find(id)
+
+		if current_user.id != @board.user_id && (@board.team.nil? || !@board.team.users.include?(current_user))
 			flash[:alert] = "You are not authorized to see this board"
 			redirect_to boards_path
 		end
-  end
+	end
 
   def table
     @boards = Board.all
@@ -40,7 +41,7 @@ class BoardsController < ApplicationController
 
 	def edit
 		@board = Board.find(params[:id])
-		if current_user.id != @board.user_id
+		if current_user.id != @board.user_id && (@board.team.nil? || !@board.team.users.include?(current_user))
 			flash[:alert] = "You are not authorized to edit this board"
 			redirect_to boards_path
 		end
@@ -48,7 +49,7 @@ class BoardsController < ApplicationController
 
 	def update
 		@board = Board.find(params[:id])
-		if current_user.id != @board.user_id
+		if current_user.id != @board.user_id && (@board.team.nil? || !@board.team.users.include?(current_user))
 			flash[:alert] = "You are not authorized to edit this board"
 			redirect_to boards_path
 		else
@@ -64,7 +65,7 @@ class BoardsController < ApplicationController
 
 	def destroy
 		@board = Board.find(params[:id])
-		if current_user.id != @board.user_id
+		if current_user.id != @board.user_id && (@board.team.nil? || !@board.team.users.include?(current_user))
 			flash[:alert] = "You are not authorized to delete this board"
 			redirect_to boards_path
 		else

@@ -15,6 +15,7 @@
       <div class="d-flex align-items-center mb-2 justify-content-between">
         <h6 class="card-subtitle mb-0 text-white">
           Create a new user
+          <%# flash[:notice] = "Only admins can create custom users."%>
         </h6>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="white" class="bi bi-plus-circle">
           <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM7.5 4a.5.5 0 0 1 1 0v2.5H11a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V7.5H5a.5.5 0 0 1 0-1h2.5V4z"/>
@@ -22,7 +23,6 @@
       </div>
     </div>
   </div>
-  <% flash[:notice] = "Only admins can create custom users."%>
 <% end %>
 
 <% @users.each do |user| %>  
