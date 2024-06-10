@@ -68,7 +68,7 @@
 </div>
 
 
-<div class="home-card-container">
+<div class="home-card-container" id="test-row">
   <% @board.states.each do |state| %>
     <div class="card" id="show-states-card">
       <div class="card-body">
@@ -88,24 +88,25 @@
           <% end %>
         </h5>
         
-        <div class="task-list">
-          <% state.tasks.each do |task| %>  
+        <% state.tasks.each do |task| %>  
+          <div class="task-container">
             <%= link_to task_path(state_id: task.state.id, id: task.id), class: 'card-text', id: 'show-task-name', style: 'text-decoration: none;' do %>
-            <div class="task-card">
-              <div class="task-card-body" style="color: white">
+              <div class="task-card">
+                <div class="task-card-body" style="color: white; width: 180px">
                   <%= task.name %>
+                </div>
               </div>
-            </div>
             <% end %>
-                
-                <select class="task-state-selector" data-task-id="<%= task.id %>">
-                  <% @board.states.each do |state| %>
-                    <option value="<%= state.id %>" <%= 'selected' if task.state_id == state.id %>><%= state.name %></option>
-                  <% end %>
-                </select>
-          
-          <% end %>
-        </div>
+
+            <div class="select">
+              <select class="task-state-selector" style="background-color: rgba(133, 22, 22); color: white; border: none; border-radius: 5px; width: 18px; height: 40px ;margin-bottom: 10px" data-task-id="<%= task.id %>">
+                <% @board.states.each do |state| %>
+                  <option value="<%= state.id %>" <%= 'selected' if task.state_id == state.id %>><%= state.name %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+        <% end %>
 
         <div class="add-task-button-container">
           <%= link_to new_task_path(state_id: state.id), class: 'btn add-task-button', style: 'color: rgb(98,108,111); margin-left: -15px' do %>
@@ -129,8 +130,6 @@
             </svg>
             <span style="text-decoration: none"></span>
           </h5>
-          <div class="task-list">
-          </div>
         </div>
       </div>
     </a>
