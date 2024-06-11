@@ -136,6 +136,7 @@
   </div>
 </div>
 
+<%# https://stackoverflow.com/questions/44692446/rails-execute-an-ajax-call-via-select-dropdown-menu %>
 <script>
     const taskStateSelectors = document.querySelectorAll(".task-state-selector");
 
@@ -147,11 +148,20 @@
         fetch(`/tasks/${taskId}`, {
           method: "PATCH",
           headers: {
+            "X-Requested-With": "XMLHttpRequest",
             "Content-Type": "application/json",
             "X-CSRF-Token": "<%= form_authenticity_token %>"
           },
           body: JSON.stringify({ state_id: newStateId })
+        })
+        .then(response => {
+          if (response.ok) {
+          } else {
+            window.location.reload();
+          }
+        window.location.reload();
+        })
         });
       });
-    });
 </script>
+
