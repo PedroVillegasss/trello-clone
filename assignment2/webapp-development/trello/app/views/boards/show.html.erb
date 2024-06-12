@@ -1,10 +1,7 @@
 <div class="container">
   <nav class="navbar" id="show-navbar">
     <li class="nav-item d-flex align-items-center">
-      <span style="font-weight: bold; font-size: 20px;"><%= @board.name %></span>
-      
-      
-
+      <span style="font-weight: bold; font-size: 20px; margin-left: 10px"><%= @board.name %></span>
       <% @board.labels.each do |label| %>
       <a href="<%= label_path(label) %>" class="board-link">
         <div class="d-flex" style="margin-left: 15px;">
