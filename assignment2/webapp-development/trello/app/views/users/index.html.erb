@@ -35,7 +35,11 @@
         </div>
         <div>
           <a href="#" class="card-link"><%= link_to 'Show', user_path(user), class: 'btn p-0 mr-2', style: 'color: rgb(220, 38, 38); font-weight: bold'%></a>
-          <a href="#" class="card-link"><%= link_to 'Edit', edit_user_path(user), class: 'btn p-0 mr-2', style: 'color: rgb(220, 38, 38); font-weight: bold'%></a>
+          
+          <%if user == current_user%>
+            <a href="#" class="card-link"><%= link_to 'Edit', edit_user_registration_path, class: 'btn p-0 mr-2', style: 'color: rgb(220, 38, 38); font-weight: bold'%></a>
+          <% end %>
+          
           <a href="#" class="card-link"><%= link_to 'Destroy', user, data: { turbo_confirm: 'Are you sure?', turbo_method: "delete"}, class: 'btn p-0 mr-2', style: 'color: rgb(220, 38, 38); font-weight: bold'%></a>
         </div>
       </div>
