@@ -31,5 +31,5 @@ class User < ApplicationRecord
 
   validates :name, presence: { message: "The user should have a name" }
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: "The user should have a valid email" }
-  validates :password, presence: true, length: { minimum: 3, message: "The user's password should have a minimum length of 3 characters" }
+  validates :encrypted_password, presence: true, length: { minimum: 3, message: "The user's password should have a minimum length of 3 characters" }
 end
