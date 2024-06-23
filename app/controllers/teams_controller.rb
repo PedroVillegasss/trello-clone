@@ -21,19 +21,32 @@ class TeamsController < ApplicationController
 	end
 
   def edit
-		@team = Team.find(params[:id])
-	end
+    @team = Team.find(params[:id])
+    @team_members = @team.users
 
-	def update
-		@team = Team.find(params[:id])
-		if @team.update team_params
-			flash[:notice] = "Team updated successfully"
-			redirect_to teams_path
-		else
-			render :edit
-			flash[:error] = "Team update failed"
-		end
-	end
+    unless @team_members.include?(current_user)
+      flash[:notice] = "Only the members can edit the team."
+      redirect_to teams_path
+    end
+  end
+
+  def update
+    @team = Team.find(params[:id])
+    @team_members = @team.users
+
+    unless @team_members.include?(current_user)
+      flash[:notice] = "Only the members can edit the team."
+      redirect_to teams_path
+    else
+      if @team.update(team_params)
+        flash[:notice] = "Team updated successfully."
+        redirect_to teams_path
+      else
+        flash[:error] = "Team update failed."
+        render :edit
+      end
+    end
+  end
 
   def show
 		@team = Team.find(params[:id])
@@ -41,13 +54,20 @@ class TeamsController < ApplicationController
 		@team_members = @team.users
 	end
 
-  def destroy
-    @team = Team.find(params[:id])
+	def destroy
+		@team = Team.find(params[:id])
 		@team.boards.update_all(team_id: nil)
-    @team.destroy
-    redirect_to teams_path
-    flash[:notice] = "Team deleted successfully"
-  end
+		@team_members = @team.users
+
+		unless @team_members.include?(current_user)
+			flash[:notice] = "Only the members can edit the team."
+			redirect_to teams_path
+		else
+			@team.destroy
+			flash[:notice] = "Team deleted successfully."
+			redirect_to teams_path
+		end
+	end
 
   private
 
