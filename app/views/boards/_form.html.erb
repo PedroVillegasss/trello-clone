@@ -10,7 +10,7 @@
 
         <%= form_with model: @board, local: true do |f| %>
         <div class="form-group mb-3">
-            <%= f.collection_select :team_id, Team.all, :id, :name, {prompt: "Team"}, {class: "form-control", required: false}%>
+            <%= f.collection_select :team_id, current_user.teams, :id, :name, {prompt: "Team"}, {class: "form-control", required: false}%>
         </div>
 
         <div class="form-group mb-3">
