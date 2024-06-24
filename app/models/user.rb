@@ -20,13 +20,13 @@ class User < ApplicationRecord
   has_many :task_comments
 
   has_many :user_boards
-  has_many :boards, :through => :user_boards
+  has_many :boards, :through => :user_boards, dependent: :destroy
 
   has_many :user_tasks
-  has_many :tasks, :through => :user_tasks
+  has_many :tasks, :through => :user_tasks, dependent: :destroy
 
   has_many :user_teams
-  has_many :teams, :through => :user_teams
+  has_many :teams, :through => :user_teams, dependent: :destroy
 
 
   validates :name, presence: { message: "The user should have a name" }
